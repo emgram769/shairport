@@ -3,3 +3,4 @@
 /config.mk
 /config.h
 /integer_fft.c.*
+/*.swp
