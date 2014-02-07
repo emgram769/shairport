@@ -41,6 +41,8 @@
 #include "common.h"
 #include "player.h"
 #include "rtp.h"
+#include "integer_fft.h"
+#include "visualizer.h"
 
 #ifdef FANCY_RESAMPLING
 #include <samplerate.h>
@@ -384,8 +386,10 @@ static short *buffer_get_frame(void) {
         debug(1, "missing frame %04X.", read);
         memset(curframe->data, 0, FRAME_BYTES(frame_size));
     }
+
     curframe->ready = 0;
     pthread_mutex_unlock(&ab_mutex);
+
 
     return curframe->data;
 }
@@ -428,6 +432,13 @@ static int stuff_buffer(double playback_rate, short *inptr, short *outptr) {
 
     return frame_size + stuff;
 }
+
+#define M 10
+#define N (1 << M)
+
+static unsigned fftCount = 0;
+static short fftBufRe[N];
+static unsigned fftz = 0;
 
 static void *player_thread_func(void *arg) {
     int play_samples;
@@ -476,6 +487,29 @@ static void *player_thread_func(void *arg) {
 #endif
             play_samples = stuff_buffer(bf_playback_rate, inbuf, outbuf);
 
+        if (visualizer_enabled) {
+            int z;
+            if (fftCount % 15 == 0) {
+                for (z = 0; z < FRAME_BYTES(frame_size)/4; z++) {
+                    fftBufRe[z] = outbuf[z*2];
+                }
+            } else if (fftCount % 15 == 1) {
+                short fftBufIm[N];
+
+                int offset = z;
+                for (; z < N; z ++) {
+                    fftBufRe[z] = outbuf[(z - offset)*2];
+                }
+                memset(fftBufIm, 0, 2*N);
+                if (fix_fft(fftBufRe, fftBufIm, M, 0) != -1) {
+                    short loud[N];
+                    fix_loud(loud, fftBufRe, fftBufIm, N, 0);
+                    draw_buf(loud, N);
+                }
+            }
+            fftCount++;
+        }
+
         config.output->play(outbuf, play_samples);
     }
 
@@ -502,6 +536,8 @@ void player_flush(void) {
 }
 
 int player_play(stream_cfg *stream) {
+    if (visualizer_enabled)
+        init_screen();
     if (config.buffer_start_fill > BUFFER_FRAMES)
         die("specified buffer starting fill %d > buffer size %d",
             config.buffer_start_fill, BUFFER_FRAMES);
@@ -533,4 +569,6 @@ void player_stop(void) {
 #ifdef FANCY_RESAMPLING
     free_src();
 #endif
+    if (visualizer_enabled)
+        end_screen();
 }

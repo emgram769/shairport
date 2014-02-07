@@ -42,6 +42,8 @@ static void log_setup();
 
 static int shutting_down = 0;
 
+int visualizer_enabled = 0;
+
 void shairport_shutdown(int retval) {
     if (shutting_down)
         return;
@@ -134,7 +136,7 @@ int parse_options(int argc, char **argv) {
 
     int opt;
     while ((opt = getopt_long(argc, argv,
-                              "+hdvP:l:e:p:a:o:b:B:E:wm:",
+                              "+hdvVP:l:e:p:a:o:b:B:E:wm:",
                               long_options, NULL)) > 0) {
         switch (opt) {
             default:
@@ -146,6 +148,10 @@ int parse_options(int argc, char **argv) {
                 break;
             case 'v':
                 debuglev++;
+                break;
+            case 'V':
+                visualizer_enabled++;
+                //config.logfile = "visualizer.log";
                 break;
             case 'p':
                 config.port = atoi(optarg);

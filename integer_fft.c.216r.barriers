@@ -1,0 +1,4186 @@
+
+;; Function fix_fft (fix_fft)
+
+(note 1 0 7 NOTE_INSN_DELETED)
+
+(note 7 1 471 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn/f 471 7 472 (parallel [
+            (set (mem/c:BLK (pre_modify:SI (reg/f:SI 13 sp)
+                        (plus:SI (reg/f:SI 13 sp)
+                            (const_int -12 [0xfffffffffffffff4]))) [0 A8])
+                (unspec:BLK [
+                        (reg:SI 4 r4)
+                    ] 2))
+            (use (reg/f:SI 11 fp))
+            (use (reg:SI 14 lr))
+        ]) integer_fft.c:88 309 {*push_multi}
+     (expr_list:REG_FRAME_RELATED_EXPR (sequence [
+                (set/f (reg/f:SI 13 sp)
+                    (plus:SI (reg/f:SI 13 sp)
+                        (const_int -12 [0xfffffffffffffff4])))
+                (set/f (mem/c:SI (reg/f:SI 13 sp) [0 S4 A32])
+                    (reg:SI 4 r4))
+                (set/f (mem/c:SI (plus:SI (reg/f:SI 13 sp)
+                            (const_int 4 [0x4])) [0 S4 A32])
+                    (reg/f:SI 11 fp))
+                (set/f (mem/c:SI (plus:SI (reg/f:SI 13 sp)
+                            (const_int 8 [0x8])) [0 S4 A32])
+                    (reg:SI 14 lr))
+            ])
+        (nil)))
+
+(insn/f 472 471 473 (set (reg/f:SI 11 fp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int 8 [0x8]))) integer_fft.c:88 4 {*arm_addsi3}
+     (nil))
+
+(insn/f 473 472 474 (set (reg/f:SI 13 sp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int -76 [0xffffffffffffffb4]))) integer_fft.c:88 4 {*arm_addsi3}
+     (nil))
+
+(insn 474 473 475 (set (mem:BLK (scratch) [0 A8])
+        (unspec:BLK [
+                (reg/f:SI 13 sp)
+                (reg/f:SI 11 fp)
+            ] 5)) integer_fft.c:88 310 {stack_tie}
+     (nil))
+
+(note 475 474 2 NOTE_INSN_PROLOGUE_END)
+
+(insn 2 475 3 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])
+        (reg:SI 0 r0 [ fr ])) integer_fft.c:88 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 3 2 4 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])
+        (reg:SI 1 r1 [ fi ])) integer_fft.c:88 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 4 3 5 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])
+        (reg:SI 2 r2 [ m ])) integer_fft.c:88 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 5 4 6 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -84 [0xffffffffffffffac])) [0 inverse+0 S4 A32])
+        (reg:SI 3 r3 [ inverse ])) integer_fft.c:88 625 {*arm_movsi_vfp}
+     (nil))
+
+(note 6 5 9 NOTE_INSN_FUNCTION_BEG)
+
+(insn 9 6 10 (set (reg:SI 2 r2 [239])
+        (const_int 1 [0x1])) integer_fft.c:92 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 10 9 11 (set (reg:SI 3 r3 [240])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:92 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 11 10 12 (set (reg:SI 3 r3 [241])
+        (ashift:SI (reg:SI 2 r2 [239])
+            (reg:SI 3 r3 [240]))) integer_fft.c:92 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 12 11 13 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -52 [0xffffffffffffffcc])) [0 n+0 S4 A32])
+        (reg:SI 3 r3 [241])) integer_fft.c:92 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 13 12 14 (set (reg:SI 3 r3 [242])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -52 [0xffffffffffffffcc])) [0 n+0 S4 A32])) integer_fft.c:94 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 14 13 15 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [242])
+            (const_int 1024 [0x400]))) integer_fft.c:94 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 15 14 16 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 20)
+            (pc))) integer_fft.c:94 211 {*arm_cond_branch}
+     (nil)
+ -> 20)
+
+(note 16 15 17 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(insn 17 16 447 (set (reg:SI 3 r3 [orig:134 D.1489 ] [134])
+        (const_int -1 [0xffffffffffffffff])) integer_fft.c:95 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 447 17 448 (set (pc)
+        (label_ref 435)) integer_fft.c:95 223 {*arm_jump}
+     (nil)
+ -> 435)
+
+(barrier 448 447 20)
+
+(code_label 20 448 21 2 "" [1 uses])
+
+(note 21 20 22 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 22 21 23 (set (reg:SI 3 r3 [243])
+        (const_int 0 [0])) integer_fft.c:97 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 23 22 24 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 mr+0 S4 A32])
+        (reg:SI 3 r3 [243])) integer_fft.c:97 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 24 23 25 (set (reg:SI 3 r3 [244])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -52 [0xffffffffffffffcc])) [0 n+0 S4 A32])) integer_fft.c:98 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 25 24 26 (set (reg:SI 3 r3 [245])
+        (plus:SI (reg:SI 3 r3 [244])
+            (const_int -1 [0xffffffffffffffff]))) integer_fft.c:98 4 {*arm_addsi3}
+     (nil))
+
+(insn 26 25 27 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -56 [0xffffffffffffffc8])) [0 nn+0 S4 A32])
+        (reg:SI 3 r3 [245])) integer_fft.c:98 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 27 26 28 (set (reg:SI 3 r3 [246])
+        (const_int 0 [0])) integer_fft.c:99 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 28 27 29 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -36 [0xffffffffffffffdc])) [0 scale+0 S4 A32])
+        (reg:SI 3 r3 [246])) integer_fft.c:99 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 29 28 30 (set (reg:SI 3 r3 [247])
+        (const_int 1 [0x1])) integer_fft.c:102 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 30 29 449 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])
+        (reg:SI 3 r3 [247])) integer_fft.c:102 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 449 30 450 (set (pc)
+        (label_ref 113)) integer_fft.c:102 223 {*arm_jump}
+     (nil)
+ -> 113)
+
+(barrier 450 449 115)
+
+(code_label 115 450 33 8 "" [1 uses])
+
+(note 33 115 34 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(insn 34 33 35 (set (reg:SI 3 r3 [248])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -52 [0xffffffffffffffcc])) [0 n+0 S4 A32])) integer_fft.c:103 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 35 34 43 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])
+        (reg:SI 3 r3 [248])) integer_fft.c:103 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 43 35 36 5 "" [1 uses])
+
+(note 36 43 37 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(insn 37 36 38 (set (reg:SI 3 r3 [249])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])) integer_fft.c:105 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 38 37 39 (set (reg:SI 3 r3 [250])
+        (ashiftrt:SI (reg:SI 3 r3 [249])
+            (const_int 1 [0x1]))) integer_fft.c:105 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 39 38 40 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])
+        (reg:SI 3 r3 [250])) integer_fft.c:105 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 40 39 41 (set (reg:SI 2 r2 [251])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 mr+0 S4 A32])) integer_fft.c:106 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 41 40 42 (set (reg:SI 3 r3 [252])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])) integer_fft.c:106 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 42 41 44 (set (reg:SI 2 r2 [orig:135 D.1490 ] [135])
+        (plus:SI (reg:SI 2 r2 [251])
+            (reg:SI 3 r3 [252]))) integer_fft.c:106 4 {*arm_addsi3}
+     (nil))
+
+(insn 44 42 45 (set (reg:SI 3 r3 [253])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -56 [0xffffffffffffffc8])) [0 nn+0 S4 A32])) integer_fft.c:106 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 45 44 46 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [orig:135 D.1490 ] [135])
+            (reg:SI 3 r3 [253]))) integer_fft.c:106 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 46 45 47 (set (pc)
+        (if_then_else (gt (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 43)
+            (pc))) integer_fft.c:106 211 {*arm_cond_branch}
+     (nil)
+ -> 43)
+
+(note 47 46 48 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(insn 48 47 49 (set (reg:SI 3 r3 [254])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])) integer_fft.c:107 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 49 48 50 (set (reg:SI 2 r2 [orig:136 D.1491 ] [136])
+        (plus:SI (reg:SI 3 r3 [254])
+            (const_int -1 [0xffffffffffffffff]))) integer_fft.c:107 4 {*arm_addsi3}
+     (nil))
+
+(insn 50 49 51 (set (reg:SI 3 r3 [255])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 mr+0 S4 A32])) integer_fft.c:107 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 51 50 52 (set (reg:SI 2 r2 [orig:137 D.1492 ] [137])
+        (and:SI (reg:SI 2 r2 [orig:136 D.1491 ] [136])
+            (reg:SI 3 r3 [255]))) integer_fft.c:107 69 {*arm_andsi3_insn}
+     (nil))
+
+(insn 52 51 53 (set (reg:SI 3 r3 [256])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])) integer_fft.c:107 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 53 52 54 (set (reg:SI 3 r3 [257])
+        (plus:SI (reg:SI 2 r2 [orig:137 D.1492 ] [137])
+            (reg:SI 3 r3 [256]))) integer_fft.c:107 4 {*arm_addsi3}
+     (nil))
+
+(insn 54 53 55 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 mr+0 S4 A32])
+        (reg:SI 3 r3 [257])) integer_fft.c:107 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 55 54 56 (set (reg:SI 2 r2 [258])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 mr+0 S4 A32])) integer_fft.c:109 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 56 55 57 (set (reg:SI 3 r3 [259])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:109 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 57 56 58 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [258])
+            (reg:SI 3 r3 [259]))) integer_fft.c:109 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 58 57 62 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref:SI 466)
+            (pc))) integer_fft.c:109 211 {*arm_cond_branch}
+     (nil)
+ -> 466)
+
+(code_label 62 58 63 6 "" [0 uses])
+
+(note 63 62 64 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 64 63 65 (set (reg:SI 3 r3 [orig:138 m.9 ] [138])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:110 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 65 64 66 (set (reg:SI 3 r3 [orig:139 D.1496 ] [139])
+        (ashift:SI (reg:SI 3 r3 [orig:138 m.9 ] [138])
+            (const_int 1 [0x1]))) integer_fft.c:110 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 66 65 67 (set (reg:SI 2 r2 [260])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:110 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 67 66 68 (set (reg/f:SI 3 r3 [orig:140 D.1497 ] [140])
+        (plus:SI (reg:SI 2 r2 [260])
+            (reg:SI 3 r3 [orig:139 D.1496 ] [139]))) integer_fft.c:110 4 {*arm_addsi3}
+     (nil))
+
+(insn 68 67 69 (set (reg:HI 3 r3 [261])
+        (mem:HI (reg/f:SI 3 r3 [orig:140 D.1497 ] [140]) [0 *D.1497_37+0 S2 A16])) integer_fft.c:110 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 69 68 70 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -58 [0xffffffffffffffc6])) [0 tr+0 S2 A16])
+        (reg:HI 3 r3 [261])) integer_fft.c:110 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 70 69 71 (set (reg:SI 3 r3 [orig:141 m.10 ] [141])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:111 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 71 70 72 (set (reg:SI 3 r3 [orig:142 D.1499 ] [142])
+        (ashift:SI (reg:SI 3 r3 [orig:141 m.10 ] [141])
+            (const_int 1 [0x1]))) integer_fft.c:111 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 72 71 73 (set (reg:SI 2 r2 [262])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:111 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 73 72 74 (set (reg/f:SI 3 r3 [orig:143 D.1500 ] [143])
+        (plus:SI (reg:SI 2 r2 [262])
+            (reg:SI 3 r3 [orig:142 D.1499 ] [142]))) integer_fft.c:111 4 {*arm_addsi3}
+     (nil))
+
+(insn 74 73 75 (set (reg:SI 2 r2 [orig:144 mr.11 ] [144])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 mr+0 S4 A32])) integer_fft.c:111 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 75 74 76 (set (reg:SI 2 r2 [orig:145 D.1502 ] [145])
+        (ashift:SI (reg:SI 2 r2 [orig:144 mr.11 ] [144])
+            (const_int 1 [0x1]))) integer_fft.c:111 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 76 75 77 (set (reg:SI 1 r1 [263])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:111 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 77 76 78 (set (reg/f:SI 2 r2 [orig:146 D.1503 ] [146])
+        (plus:SI (reg:SI 1 r1 [263])
+            (reg:SI 2 r2 [orig:145 D.1502 ] [145]))) integer_fft.c:111 4 {*arm_addsi3}
+     (nil))
+
+(insn 78 77 79 (set (reg:SI 2 r2 [orig:147 D.1504 ] [147])
+        (zero_extend:SI (mem:HI (reg/f:SI 2 r2 [orig:146 D.1503 ] [146]) [0 *D.1503_44+0 S2 A16]))) integer_fft.c:111 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 79 78 80 (set (mem:HI (reg/f:SI 3 r3 [orig:143 D.1500 ] [143]) [0 *D.1500_41+0 S2 A16])
+        (reg:HI 2 r2 [orig:147 D.1504 ] [147])) integer_fft.c:111 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 80 79 81 (set (reg:SI 3 r3 [orig:148 mr.12 ] [148])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 mr+0 S4 A32])) integer_fft.c:112 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 81 80 82 (set (reg:SI 3 r3 [orig:149 D.1506 ] [149])
+        (ashift:SI (reg:SI 3 r3 [orig:148 mr.12 ] [148])
+            (const_int 1 [0x1]))) integer_fft.c:112 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 82 81 83 (set (reg:SI 2 r2 [264])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:112 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 83 82 84 (set (reg/f:SI 3 r3 [orig:150 D.1507 ] [150])
+        (plus:SI (reg:SI 2 r2 [264])
+            (reg:SI 3 r3 [orig:149 D.1506 ] [149]))) integer_fft.c:112 4 {*arm_addsi3}
+     (nil))
+
+(insn 84 83 85 (set (reg:HI 2 r2 [265])
+        (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -58 [0xffffffffffffffc6])) [0 tr+0 S2 A16])) integer_fft.c:112 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 85 84 86 (set (mem:HI (reg/f:SI 3 r3 [orig:150 D.1507 ] [150]) [0 *D.1507_48+0 S2 A16])
+        (reg:HI 2 r2 [265])) integer_fft.c:112 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 86 85 87 (set (reg:SI 3 r3 [orig:151 m.13 ] [151])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:113 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 87 86 88 (set (reg:SI 3 r3 [orig:152 D.1509 ] [152])
+        (ashift:SI (reg:SI 3 r3 [orig:151 m.13 ] [151])
+            (const_int 1 [0x1]))) integer_fft.c:113 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 88 87 89 (set (reg:SI 2 r2 [266])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:113 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 89 88 90 (set (reg/f:SI 3 r3 [orig:153 D.1510 ] [153])
+        (plus:SI (reg:SI 2 r2 [266])
+            (reg:SI 3 r3 [orig:152 D.1509 ] [152]))) integer_fft.c:113 4 {*arm_addsi3}
+     (nil))
+
+(insn 90 89 91 (set (reg:HI 3 r3 [267])
+        (mem:HI (reg/f:SI 3 r3 [orig:153 D.1510 ] [153]) [0 *D.1510_52+0 S2 A16])) integer_fft.c:113 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 91 90 92 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -60 [0xffffffffffffffc4])) [0 ti+0 S2 A16])
+        (reg:HI 3 r3 [267])) integer_fft.c:113 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 92 91 93 (set (reg:SI 3 r3 [orig:154 m.14 ] [154])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:114 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 93 92 94 (set (reg:SI 3 r3 [orig:155 D.1512 ] [155])
+        (ashift:SI (reg:SI 3 r3 [orig:154 m.14 ] [154])
+            (const_int 1 [0x1]))) integer_fft.c:114 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 94 93 95 (set (reg:SI 2 r2 [268])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:114 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 95 94 96 (set (reg/f:SI 3 r3 [orig:156 D.1513 ] [156])
+        (plus:SI (reg:SI 2 r2 [268])
+            (reg:SI 3 r3 [orig:155 D.1512 ] [155]))) integer_fft.c:114 4 {*arm_addsi3}
+     (nil))
+
+(insn 96 95 97 (set (reg:SI 2 r2 [orig:157 mr.15 ] [157])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 mr+0 S4 A32])) integer_fft.c:114 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 97 96 98 (set (reg:SI 2 r2 [orig:158 D.1515 ] [158])
+        (ashift:SI (reg:SI 2 r2 [orig:157 mr.15 ] [157])
+            (const_int 1 [0x1]))) integer_fft.c:114 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 98 97 99 (set (reg:SI 1 r1 [269])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:114 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 99 98 100 (set (reg/f:SI 2 r2 [orig:159 D.1516 ] [159])
+        (plus:SI (reg:SI 1 r1 [269])
+            (reg:SI 2 r2 [orig:158 D.1515 ] [158]))) integer_fft.c:114 4 {*arm_addsi3}
+     (nil))
+
+(insn 100 99 101 (set (reg:SI 2 r2 [orig:160 D.1517 ] [160])
+        (zero_extend:SI (mem:HI (reg/f:SI 2 r2 [orig:159 D.1516 ] [159]) [0 *D.1516_59+0 S2 A16]))) integer_fft.c:114 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 101 100 102 (set (mem:HI (reg/f:SI 3 r3 [orig:156 D.1513 ] [156]) [0 *D.1513_56+0 S2 A16])
+        (reg:HI 2 r2 [orig:160 D.1517 ] [160])) integer_fft.c:114 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 102 101 103 (set (reg:SI 3 r3 [orig:161 mr.16 ] [161])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 mr+0 S4 A32])) integer_fft.c:115 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 103 102 104 (set (reg:SI 3 r3 [orig:162 D.1519 ] [162])
+        (ashift:SI (reg:SI 3 r3 [orig:161 mr.16 ] [161])
+            (const_int 1 [0x1]))) integer_fft.c:115 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 104 103 105 (set (reg:SI 2 r2 [270])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:115 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 105 104 106 (set (reg/f:SI 3 r3 [orig:163 D.1520 ] [163])
+        (plus:SI (reg:SI 2 r2 [270])
+            (reg:SI 3 r3 [orig:162 D.1519 ] [162]))) integer_fft.c:115 4 {*arm_addsi3}
+     (nil))
+
+(insn 106 105 107 (set (reg:HI 2 r2 [271])
+        (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -60 [0xffffffffffffffc4])) [0 ti+0 S2 A16])) integer_fft.c:115 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 107 106 463 (set (mem:HI (reg/f:SI 3 r3 [orig:163 D.1520 ] [163]) [0 *D.1520_63+0 S2 A16])
+        (reg:HI 2 r2 [271])) integer_fft.c:115 178 {*movhi_insn_arch4}
+     (nil))
+
+(jump_insn 463 107 464 (set (pc)
+        (label_ref 108)) 223 {*arm_jump}
+     (nil)
+ -> 108)
+
+(barrier 464 463 466)
+
+(code_label 466 464 465 27 "" [1 uses])
+
+(note 465 466 467 [bb 42] NOTE_INSN_BASIC_BLOCK)
+
+(insn 467 465 108 (const_int 0 [0]) integer_fft.c:109 251 {nop}
+     (nil))
+
+(code_label 108 467 109 7 "" [1 uses])
+
+(note 109 108 110 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(insn 110 109 111 (set (reg:SI 3 r3 [272])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:102 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 111 110 112 (set (reg:SI 3 r3 [273])
+        (plus:SI (reg:SI 3 r3 [272])
+            (const_int 1 [0x1]))) integer_fft.c:102 4 {*arm_addsi3}
+     (nil))
+
+(insn 112 111 113 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])
+        (reg:SI 3 r3 [273])) integer_fft.c:102 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 113 112 114 4 "" [1 uses])
+
+(note 114 113 116 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(insn 116 114 117 (set (reg:SI 2 r2 [274])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:102 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 117 116 118 (set (reg:SI 3 r3 [275])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -56 [0xffffffffffffffc8])) [0 nn+0 S4 A32])) integer_fft.c:102 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 118 117 119 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [274])
+            (reg:SI 3 r3 [275]))) integer_fft.c:102 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 119 118 120 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 115)
+            (pc))) integer_fft.c:102 211 {*arm_cond_branch}
+     (nil)
+ -> 115)
+
+(note 120 119 121 [bb 11] NOTE_INSN_BASIC_BLOCK)
+
+(insn 121 120 122 (set (reg:SI 3 r3 [276])
+        (const_int 1 [0x1])) integer_fft.c:118 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 122 121 123 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])
+        (reg:SI 3 r3 [276])) integer_fft.c:118 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 123 122 124 (set (reg:SI 3 r3 [277])
+        (const_int 9 [0x9])) integer_fft.c:119 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 124 123 451 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 k+0 S4 A32])
+        (reg:SI 3 r3 [277])) integer_fft.c:119 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 451 124 452 (set (pc)
+        (label_ref 426)) integer_fft.c:120 223 {*arm_jump}
+     (nil)
+ -> 426)
+
+(barrier 452 451 428)
+
+(code_label 428 452 127 26 "" [1 uses])
+
+(note 127 428 128 [bb 12] NOTE_INSN_BASIC_BLOCK)
+
+(insn 128 127 129 (set (reg:SI 3 r3 [278])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -84 [0xffffffffffffffac])) [0 inverse+0 S4 A32])) integer_fft.c:121 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 129 128 130 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [278])
+            (const_int 0 [0]))) integer_fft.c:121 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 130 129 131 (set (pc)
+        (if_then_else (eq (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 209)
+            (pc))) integer_fft.c:121 211 {*arm_cond_branch}
+     (nil)
+ -> 209)
+
+(note 131 130 132 [bb 13] NOTE_INSN_BASIC_BLOCK)
+
+(insn 132 131 133 (set (reg:SI 3 r3 [279])
+        (const_int 0 [0])) integer_fft.c:123 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 133 132 134 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -40 [0xffffffffffffffd8])) [0 shift+0 S4 A32])
+        (reg:SI 3 r3 [279])) integer_fft.c:123 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 134 133 135 (set (reg:SI 3 r3 [280])
+        (const_int 0 [0])) integer_fft.c:124 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 135 134 453 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [280])) integer_fft.c:124 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 453 135 454 (set (pc)
+        (label_ref 191)) integer_fft.c:124 223 {*arm_jump}
+     (nil)
+ -> 191)
+
+(barrier 454 453 193)
+
+(code_label 193 454 138 17 "" [1 uses])
+
+(note 138 193 139 [bb 14] NOTE_INSN_BASIC_BLOCK)
+
+(insn 139 138 140 (set (reg:SI 3 r3 [orig:164 i.17 ] [164])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:125 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 140 139 141 (set (reg:SI 3 r3 [orig:165 D.1524 ] [165])
+        (ashift:SI (reg:SI 3 r3 [orig:164 i.17 ] [164])
+            (const_int 1 [0x1]))) integer_fft.c:125 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 141 140 142 (set (reg:SI 2 r2 [281])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:125 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 142 141 143 (set (reg/f:SI 3 r3 [orig:166 D.1525 ] [166])
+        (plus:SI (reg:SI 2 r2 [281])
+            (reg:SI 3 r3 [orig:165 D.1524 ] [165]))) integer_fft.c:125 4 {*arm_addsi3}
+     (nil))
+
+(insn 143 142 144 (set (reg:SI 3 r3 [orig:167 D.1526 ] [167])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [orig:166 D.1525 ] [166]) [0 *D.1525_72+0 S2 A16]))) integer_fft.c:125 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 144 143 145 (set (reg:SI 3 r3 [282])
+        (sign_extend:SI (reg:HI 3 r3 [orig:167 D.1526 ] [167]))) integer_fft.c:125 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 145 144 146 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])
+        (reg:SI 3 r3 [282])) integer_fft.c:125 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 146 145 147 (set (reg:SI 3 r3 [283])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:126 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 147 146 148 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [283])
+            (const_int 0 [0]))) integer_fft.c:126 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 148 147 149 (set (pc)
+        (if_then_else (ge (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 153)
+            (pc))) integer_fft.c:126 211 {*arm_cond_branch}
+     (nil)
+ -> 153)
+
+(note 149 148 150 [bb 15] NOTE_INSN_BASIC_BLOCK)
+
+(insn 150 149 151 (set (reg:SI 3 r3 [284])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:127 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 151 150 152 (set (reg:SI 3 r3 [285])
+        (neg:SI (reg:SI 3 r3 [284]))) integer_fft.c:127 129 {*arm_negsi2}
+     (nil))
+
+(insn 152 151 153 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])
+        (reg:SI 3 r3 [285])) integer_fft.c:127 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 153 152 154 12 "" [1 uses])
+
+(note 154 153 155 [bb 16] NOTE_INSN_BASIC_BLOCK)
+
+(insn 155 154 156 (set (reg:SI 3 r3 [orig:168 i.18 ] [168])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:128 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 156 155 157 (set (reg:SI 3 r3 [orig:169 D.1530 ] [169])
+        (ashift:SI (reg:SI 3 r3 [orig:168 i.18 ] [168])
+            (const_int 1 [0x1]))) integer_fft.c:128 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 157 156 158 (set (reg:SI 2 r2 [286])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:128 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 158 157 159 (set (reg/f:SI 3 r3 [orig:170 D.1531 ] [170])
+        (plus:SI (reg:SI 2 r2 [286])
+            (reg:SI 3 r3 [orig:169 D.1530 ] [169]))) integer_fft.c:128 4 {*arm_addsi3}
+     (nil))
+
+(insn 159 158 160 (set (reg:SI 3 r3 [orig:171 D.1532 ] [171])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [orig:170 D.1531 ] [170]) [0 *D.1531_78+0 S2 A16]))) integer_fft.c:128 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 160 159 161 (set (reg:SI 3 r3 [287])
+        (sign_extend:SI (reg:HI 3 r3 [orig:171 D.1532 ] [171]))) integer_fft.c:128 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 161 160 162 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])
+        (reg:SI 3 r3 [287])) integer_fft.c:128 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 162 161 163 (set (reg:SI 3 r3 [288])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:129 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 163 162 164 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [288])
+            (const_int 0 [0]))) integer_fft.c:129 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 164 163 165 (set (pc)
+        (if_then_else (ge (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 169)
+            (pc))) integer_fft.c:129 211 {*arm_cond_branch}
+     (nil)
+ -> 169)
+
+(note 165 164 166 [bb 17] NOTE_INSN_BASIC_BLOCK)
+
+(insn 166 165 167 (set (reg:SI 3 r3 [289])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:130 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 167 166 168 (set (reg:SI 3 r3 [290])
+        (neg:SI (reg:SI 3 r3 [289]))) integer_fft.c:130 129 {*arm_negsi2}
+     (nil))
+
+(insn 168 167 169 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])
+        (reg:SI 3 r3 [290])) integer_fft.c:130 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 169 168 170 13 "" [1 uses])
+
+(note 170 169 171 [bb 18] NOTE_INSN_BASIC_BLOCK)
+
+(insn 171 170 172 (set (reg:SI 2 r2 [291])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:131 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 172 171 173 (set (reg:SI 3 r3 [292])
+        (mem:SI (label_ref 481) [0 S4 A32])) integer_fft.c:131 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 173 172 174 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [291])
+            (reg:SI 3 r3 [292]))) integer_fft.c:131 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 174 173 175 (set (pc)
+        (if_then_else (gt (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 180)
+            (pc))) integer_fft.c:131 211 {*arm_cond_branch}
+     (nil)
+ -> 180)
+
+(note 175 174 176 [bb 19] NOTE_INSN_BASIC_BLOCK)
+
+(insn 176 175 177 (set (reg:SI 2 r2 [293])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:131 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 177 176 178 (set (reg:SI 3 r3 [294])
+        (mem:SI (label_ref 481) [0 S4 A32])) integer_fft.c:131 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 178 177 179 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [293])
+            (reg:SI 3 r3 [294]))) integer_fft.c:131 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 179 178 180 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 186)
+            (pc))) integer_fft.c:131 211 {*arm_cond_branch}
+     (nil)
+ -> 186)
+
+(code_label 180 179 181 14 "" [1 uses])
+
+(note 181 180 182 [bb 20] NOTE_INSN_BASIC_BLOCK)
+
+(insn 182 181 183 (set (reg:SI 3 r3 [295])
+        (const_int 1 [0x1])) integer_fft.c:132 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 183 182 455 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -40 [0xffffffffffffffd8])) [0 shift+0 S4 A32])
+        (reg:SI 3 r3 [295])) integer_fft.c:132 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 455 183 456 (set (pc)
+        (label_ref 198)) integer_fft.c:133 223 {*arm_jump}
+     (nil)
+ -> 198)
+
+(barrier 456 455 186)
+
+(code_label 186 456 187 15 "" [1 uses])
+
+(note 187 186 188 [bb 21] NOTE_INSN_BASIC_BLOCK)
+
+(insn 188 187 189 (set (reg:SI 3 r3 [296])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:124 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 189 188 190 (set (reg:SI 3 r3 [297])
+        (plus:SI (reg:SI 3 r3 [296])
+            (const_int 1 [0x1]))) integer_fft.c:124 4 {*arm_addsi3}
+     (nil))
+
+(insn 190 189 191 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [297])) integer_fft.c:124 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 191 190 192 11 "" [1 uses])
+
+(note 192 191 194 [bb 22] NOTE_INSN_BASIC_BLOCK)
+
+(insn 194 192 195 (set (reg:SI 2 r2 [298])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:124 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 195 194 196 (set (reg:SI 3 r3 [299])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -52 [0xffffffffffffffcc])) [0 n+0 S4 A32])) integer_fft.c:124 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 196 195 197 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [298])
+            (reg:SI 3 r3 [299]))) integer_fft.c:124 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 197 196 198 (set (pc)
+        (if_then_else (lt (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 193)
+            (pc))) integer_fft.c:124 211 {*arm_cond_branch}
+     (nil)
+ -> 193)
+
+(code_label 198 197 199 16 "" [1 uses])
+
+(note 199 198 200 [bb 23] NOTE_INSN_BASIC_BLOCK)
+
+(insn 200 199 201 (set (reg:SI 3 r3 [300])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -40 [0xffffffffffffffd8])) [0 shift+0 S4 A32])) integer_fft.c:136 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 201 200 202 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [300])
+            (const_int 0 [0]))) integer_fft.c:136 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 202 201 203 (set (pc)
+        (if_then_else (eq (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 213)
+            (pc))) integer_fft.c:136 211 {*arm_cond_branch}
+     (nil)
+ -> 213)
+
+(note 203 202 204 [bb 24] NOTE_INSN_BASIC_BLOCK)
+
+(insn 204 203 205 (set (reg:SI 3 r3 [301])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -36 [0xffffffffffffffdc])) [0 scale+0 S4 A32])) integer_fft.c:137 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 205 204 206 (set (reg:SI 3 r3 [302])
+        (plus:SI (reg:SI 3 r3 [301])
+            (const_int 1 [0x1]))) integer_fft.c:137 4 {*arm_addsi3}
+     (nil))
+
+(insn 206 205 457 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -36 [0xffffffffffffffdc])) [0 scale+0 S4 A32])
+        (reg:SI 3 r3 [302])) integer_fft.c:137 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 457 206 458 (set (pc)
+        (label_ref 213)) 223 {*arm_jump}
+     (nil)
+ -> 213)
+
+(barrier 458 457 209)
+
+(code_label 209 458 210 10 "" [1 uses])
+
+(note 210 209 211 [bb 25] NOTE_INSN_BASIC_BLOCK)
+
+(insn 211 210 212 (set (reg:SI 3 r3 [303])
+        (const_int 1 [0x1])) integer_fft.c:143 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 212 211 213 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -40 [0xffffffffffffffd8])) [0 shift+0 S4 A32])
+        (reg:SI 3 r3 [303])) integer_fft.c:143 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 213 212 214 18 "" [2 uses])
+
+(note 214 213 215 [bb 26] NOTE_INSN_BASIC_BLOCK)
+
+(insn 215 214 216 (set (reg:SI 3 r3 [304])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])) integer_fft.c:147 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 216 215 217 (set (reg:SI 3 r3 [305])
+        (ashift:SI (reg:SI 3 r3 [304])
+            (const_int 1 [0x1]))) integer_fft.c:147 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 217 216 218 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -64 [0xffffffffffffffc0])) [0 istep+0 S4 A32])
+        (reg:SI 3 r3 [305])) integer_fft.c:147 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 218 217 219 (set (reg:SI 3 r3 [306])
+        (const_int 0 [0])) integer_fft.c:148 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 219 218 459 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])
+        (reg:SI 3 r3 [306])) integer_fft.c:148 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 459 219 460 (set (pc)
+        (label_ref 413)) integer_fft.c:148 223 {*arm_jump}
+     (nil)
+ -> 413)
+
+(barrier 460 459 415)
+
+(code_label 415 460 222 25 "" [1 uses])
+
+(note 222 415 223 [bb 27] NOTE_INSN_BASIC_BLOCK)
+
+(insn 223 222 224 (set (reg:SI 2 r2 [307])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:149 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 224 223 225 (set (reg:SI 3 r3 [308])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 k+0 S4 A32])) integer_fft.c:149 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 225 224 226 (set (reg:SI 3 r3 [309])
+        (ashift:SI (reg:SI 2 r2 [307])
+            (reg:SI 3 r3 [308]))) integer_fft.c:149 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 226 225 227 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])
+        (reg:SI 3 r3 [309])) integer_fft.c:149 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 227 226 228 (set (reg:SI 3 r3 [310])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:151 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 228 227 229 (set (reg:SI 3 r3 [orig:172 D.1541 ] [172])
+        (plus:SI (reg:SI 3 r3 [310])
+            (const_int 256 [0x100]))) integer_fft.c:151 4 {*arm_addsi3}
+     (nil))
+
+(insn 229 228 230 (set (reg/f:SI 2 r2 [311])
+        (mem:SI (const (plus (label_ref 481)
+                    (const_int 4 [0x4]))) [0 S4 A32])) integer_fft.c:151 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 230 229 231 (set (reg:SI 3 r3 [312])
+        (ashift:SI (reg:SI 3 r3 [orig:172 D.1541 ] [172])
+            (const_int 1 [0x1]))) integer_fft.c:151 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 231 230 232 (set (reg/f:SI 3 r3 [313])
+        (plus:SI (reg/f:SI 2 r2 [311])
+            (reg:SI 3 r3 [312]))) integer_fft.c:151 4 {*arm_addsi3}
+     (nil))
+
+(insn 232 231 233 (set (reg:HI 3 r3 [314])
+        (mem/s/j:HI (reg/f:SI 3 r3 [313]) [0 Sinewave S2 A16])) integer_fft.c:151 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 233 232 234 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -46 [0xffffffffffffffd2])) [0 wr+0 S2 A16])
+        (reg:HI 3 r3 [314])) integer_fft.c:151 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 234 233 235 (set (reg/f:SI 2 r2 [315])
+        (mem:SI (const (plus (label_ref 481)
+                    (const_int 4 [0x4]))) [0 S4 A32])) integer_fft.c:152 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 235 234 236 (set (reg:SI 3 r3 [316])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:152 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 236 235 237 (set (reg:SI 3 r3 [317])
+        (ashift:SI (reg:SI 3 r3 [316])
+            (const_int 1 [0x1]))) integer_fft.c:152 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 237 236 238 (set (reg/f:SI 3 r3 [318])
+        (plus:SI (reg/f:SI 2 r2 [315])
+            (reg:SI 3 r3 [317]))) integer_fft.c:152 4 {*arm_addsi3}
+     (nil))
+
+(insn 238 237 239 (set (reg:SI 3 r3 [orig:173 D.1542 ] [173])
+        (zero_extend:SI (mem/s/j:HI (reg/f:SI 3 r3 [318]) [0 Sinewave S2 A16]))) integer_fft.c:152 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 239 238 240 (set (reg:SI 3 r3 [orig:174 D.1543 ] [174])
+        (zero_extend:SI (reg:HI 3 r3 [orig:173 D.1542 ] [173]))) integer_fft.c:152 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 240 239 241 (set (reg:HI 3 r3 [319])
+        (reg:HI 3 r3 [orig:174 D.1543 ] [174])) integer_fft.c:152 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 241 240 242 (set (reg:SI 3 r3 [320])
+        (neg:SI (reg:SI 3 r3 [319]))) integer_fft.c:152 129 {*arm_negsi2}
+     (nil))
+
+(insn 242 241 243 (set (reg:SI 3 r3 [orig:175 D.1544 ] [175])
+        (zero_extend:SI (reg:HI 3 r3 [320]))) integer_fft.c:152 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 243 242 244 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -48 [0xffffffffffffffd0])) [0 wi+0 S2 A16])
+        (reg:HI 3 r3 [orig:175 D.1544 ] [175])) integer_fft.c:152 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 244 243 245 (set (reg:SI 3 r3 [321])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -84 [0xffffffffffffffac])) [0 inverse+0 S4 A32])) integer_fft.c:153 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 245 244 246 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [321])
+            (const_int 0 [0]))) integer_fft.c:153 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 246 245 247 (set (pc)
+        (if_then_else (eq (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 253)
+            (pc))) integer_fft.c:153 211 {*arm_cond_branch}
+     (nil)
+ -> 253)
+
+(note 247 246 248 [bb 28] NOTE_INSN_BASIC_BLOCK)
+
+(insn 248 247 249 (set (reg:SI 3 r3 [orig:176 wi.19 ] [176])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -48 [0xffffffffffffffd0])) [0 wi+0 S2 A16]))) integer_fft.c:154 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 249 248 250 (set (reg:HI 3 r3 [322])
+        (reg:HI 3 r3 [orig:176 wi.19 ] [176])) integer_fft.c:154 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 250 249 251 (set (reg:SI 3 r3 [323])
+        (neg:SI (reg:SI 3 r3 [322]))) integer_fft.c:154 129 {*arm_negsi2}
+     (nil))
+
+(insn 251 250 252 (set (reg:SI 3 r3 [orig:177 D.1548 ] [177])
+        (zero_extend:SI (reg:HI 3 r3 [323]))) integer_fft.c:154 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 252 251 253 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -48 [0xffffffffffffffd0])) [0 wi+0 S2 A16])
+        (reg:HI 3 r3 [orig:177 D.1548 ] [177])) integer_fft.c:154 178 {*movhi_insn_arch4}
+     (nil))
+
+(code_label 253 252 254 20 "" [1 uses])
+
+(note 254 253 255 [bb 29] NOTE_INSN_BASIC_BLOCK)
+
+(insn 255 254 256 (set (reg:SI 3 r3 [324])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -40 [0xffffffffffffffd8])) [0 shift+0 S4 A32])) integer_fft.c:155 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 256 255 257 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [324])
+            (const_int 0 [0]))) integer_fft.c:155 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 257 256 258 (set (pc)
+        (if_then_else (eq (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 265)
+            (pc))) integer_fft.c:155 211 {*arm_cond_branch}
+     (nil)
+ -> 265)
+
+(note 258 257 259 [bb 30] NOTE_INSN_BASIC_BLOCK)
+
+(insn 259 258 260 (set (reg:SI 3 r3 [325])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -46 [0xffffffffffffffd2])) [0 wr+0 S2 A16]))) integer_fft.c:156 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 260 259 261 (set (reg:SI 3 r3 [326])
+        (ashiftrt:SI (reg:SI 3 r3 [325])
+            (const_int 1 [0x1]))) integer_fft.c:156 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 261 260 262 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -46 [0xffffffffffffffd2])) [0 wr+0 S2 A16])
+        (reg:HI 3 r3 [326])) integer_fft.c:156 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 262 261 263 (set (reg:SI 3 r3 [327])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -48 [0xffffffffffffffd0])) [0 wi+0 S2 A16]))) integer_fft.c:157 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 263 262 264 (set (reg:SI 3 r3 [328])
+        (ashiftrt:SI (reg:SI 3 r3 [327])
+            (const_int 1 [0x1]))) integer_fft.c:157 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 264 263 265 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -48 [0xffffffffffffffd0])) [0 wi+0 S2 A16])
+        (reg:HI 3 r3 [328])) integer_fft.c:157 178 {*movhi_insn_arch4}
+     (nil))
+
+(code_label 265 264 266 21 "" [1 uses])
+
+(note 266 265 267 [bb 31] NOTE_INSN_BASIC_BLOCK)
+
+(insn 267 266 268 (set (reg:SI 3 r3 [329])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:159 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 268 267 461 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [329])) integer_fft.c:159 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 461 268 462 (set (pc)
+        (label_ref 402)) integer_fft.c:159 223 {*arm_jump}
+     (nil)
+ -> 402)
+
+(barrier 462 461 404)
+
+(code_label 404 462 271 24 "" [1 uses])
+
+(note 271 404 272 [bb 32] NOTE_INSN_BASIC_BLOCK)
+
+(insn 272 271 273 (set (reg:SI 2 r2 [330])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:160 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 273 272 274 (set (reg:SI 3 r3 [331])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])) integer_fft.c:160 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 274 273 275 (set (reg:SI 3 r3 [332])
+        (plus:SI (reg:SI 2 r2 [330])
+            (reg:SI 3 r3 [331]))) integer_fft.c:160 4 {*arm_addsi3}
+     (nil))
+
+(insn 275 274 276 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])
+        (reg:SI 3 r3 [332])) integer_fft.c:160 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 276 275 277 (set (reg:SI 3 r3 [orig:178 j.20 ] [178])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:161 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 277 276 278 (set (reg:SI 3 r3 [orig:179 D.1552 ] [179])
+        (ashift:SI (reg:SI 3 r3 [orig:178 j.20 ] [178])
+            (const_int 1 [0x1]))) integer_fft.c:161 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 278 277 279 (set (reg:SI 2 r2 [333])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:161 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 279 278 280 (set (reg/f:SI 3 r3 [orig:180 D.1553 ] [180])
+        (plus:SI (reg:SI 2 r2 [333])
+            (reg:SI 3 r3 [orig:179 D.1552 ] [179]))) integer_fft.c:161 4 {*arm_addsi3}
+     (nil))
+
+(insn 280 279 281 (set (reg:SI 3 r3 [orig:181 D.1554 ] [181])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [orig:180 D.1553 ] [180]) [0 *D.1553_104+0 S2 A16]))) integer_fft.c:161 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 281 280 282 (set (reg:SI 2 r2 [334])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -46 [0xffffffffffffffd2])) [0 wr+0 S2 A16]))) integer_fft.c:161 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 282 281 283 (set (reg:SI 3 r3 [335])
+        (sign_extend:SI (reg:HI 3 r3 [orig:181 D.1554 ] [181]))) integer_fft.c:161 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 283 282 284 (set (reg:SI 0 r0)
+        (reg:SI 2 r2 [334])) integer_fft.c:161 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 284 283 285 (set (reg:SI 1 r1)
+        (reg:SI 3 r3 [335])) integer_fft.c:161 625 {*arm_movsi_vfp}
+     (nil))
+
+(call_insn 285 284 286 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("fix_mpy") [flags 0x3]  <function_decl 0xb6b5c900 fix_mpy>) [0 S4 A32])
+                    (const_int 0 [0])))
+            (use (const_int 0 [0]))
+            (clobber (reg:SI 14 lr))
+        ]) integer_fft.c:161 236 {*call_value_symbol}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 286 285 288 (set (reg:SI 3 r3 [336])
+        (reg:SI 0 r0)) integer_fft.c:161 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 288 286 289 (set (reg:SI 4 r4 [orig:183 D.1556 ] [183])
+        (zero_extend:SI (reg:HI 3 r3 [orig:182 D.1555 ] [182]))) integer_fft.c:161 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 289 288 290 (set (reg:SI 3 r3 [orig:184 j.21 ] [184])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:162 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 290 289 291 (set (reg:SI 3 r3 [orig:185 D.1558 ] [185])
+        (ashift:SI (reg:SI 3 r3 [orig:184 j.21 ] [184])
+            (const_int 1 [0x1]))) integer_fft.c:162 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 291 290 292 (set (reg:SI 2 r2 [337])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:162 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 292 291 293 (set (reg/f:SI 3 r3 [orig:186 D.1559 ] [186])
+        (plus:SI (reg:SI 2 r2 [337])
+            (reg:SI 3 r3 [orig:185 D.1558 ] [185]))) integer_fft.c:162 4 {*arm_addsi3}
+     (nil))
+
+(insn 293 292 294 (set (reg:SI 3 r3 [orig:187 D.1560 ] [187])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [orig:186 D.1559 ] [186]) [0 *D.1559_110+0 S2 A16]))) integer_fft.c:162 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 294 293 295 (set (reg:SI 2 r2 [338])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -48 [0xffffffffffffffd0])) [0 wi+0 S2 A16]))) integer_fft.c:162 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 295 294 296 (set (reg:SI 3 r3 [339])
+        (sign_extend:SI (reg:HI 3 r3 [orig:187 D.1560 ] [187]))) integer_fft.c:162 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 296 295 297 (set (reg:SI 0 r0)
+        (reg:SI 2 r2 [338])) integer_fft.c:162 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 297 296 298 (set (reg:SI 1 r1)
+        (reg:SI 3 r3 [339])) integer_fft.c:162 625 {*arm_movsi_vfp}
+     (nil))
+
+(call_insn 298 297 299 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("fix_mpy") [flags 0x3]  <function_decl 0xb6b5c900 fix_mpy>) [0 S4 A32])
+                    (const_int 0 [0])))
+            (use (const_int 0 [0]))
+            (clobber (reg:SI 14 lr))
+        ]) integer_fft.c:162 236 {*call_value_symbol}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 299 298 301 (set (reg:SI 3 r3 [340])
+        (reg:SI 0 r0)) integer_fft.c:162 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 301 299 302 (set (reg:SI 3 r3 [orig:189 D.1562 ] [189])
+        (zero_extend:SI (reg:HI 3 r3 [orig:188 D.1561 ] [188]))) integer_fft.c:161 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 302 301 303 (set (reg:SI 3 r3 [341])
+        (minus:SI (reg:SI 4 r4 [orig:183 D.1556 ] [183])
+            (reg:SI 3 r3 [orig:189 D.1562 ] [189]))) integer_fft.c:161 29 {*arm_subsi3_insn}
+     (nil))
+
+(insn 303 302 304 (set (reg:SI 3 r3 [orig:190 D.1563 ] [190])
+        (zero_extend:SI (reg:HI 3 r3 [341]))) integer_fft.c:161 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 304 303 305 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -58 [0xffffffffffffffc6])) [0 tr+0 S2 A16])
+        (reg:HI 3 r3 [orig:190 D.1563 ] [190])) integer_fft.c:161 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 305 304 306 (set (reg:SI 3 r3 [orig:191 j.22 ] [191])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:163 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 306 305 307 (set (reg:SI 3 r3 [orig:192 D.1565 ] [192])
+        (ashift:SI (reg:SI 3 r3 [orig:191 j.22 ] [191])
+            (const_int 1 [0x1]))) integer_fft.c:163 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 307 306 308 (set (reg:SI 2 r2 [342])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:163 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 308 307 309 (set (reg/f:SI 3 r3 [orig:193 D.1566 ] [193])
+        (plus:SI (reg:SI 2 r2 [342])
+            (reg:SI 3 r3 [orig:192 D.1565 ] [192]))) integer_fft.c:163 4 {*arm_addsi3}
+     (nil))
+
+(insn 309 308 310 (set (reg:SI 3 r3 [orig:194 D.1567 ] [194])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [orig:193 D.1566 ] [193]) [0 *D.1566_118+0 S2 A16]))) integer_fft.c:163 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 310 309 311 (set (reg:SI 2 r2 [343])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -46 [0xffffffffffffffd2])) [0 wr+0 S2 A16]))) integer_fft.c:163 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 311 310 312 (set (reg:SI 3 r3 [344])
+        (sign_extend:SI (reg:HI 3 r3 [orig:194 D.1567 ] [194]))) integer_fft.c:163 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 312 311 313 (set (reg:SI 0 r0)
+        (reg:SI 2 r2 [343])) integer_fft.c:163 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 313 312 314 (set (reg:SI 1 r1)
+        (reg:SI 3 r3 [344])) integer_fft.c:163 625 {*arm_movsi_vfp}
+     (nil))
+
+(call_insn 314 313 315 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("fix_mpy") [flags 0x3]  <function_decl 0xb6b5c900 fix_mpy>) [0 S4 A32])
+                    (const_int 0 [0])))
+            (use (const_int 0 [0]))
+            (clobber (reg:SI 14 lr))
+        ]) integer_fft.c:163 236 {*call_value_symbol}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 315 314 317 (set (reg:SI 3 r3 [345])
+        (reg:SI 0 r0)) integer_fft.c:163 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 317 315 318 (set (reg:SI 4 r4 [orig:196 D.1569 ] [196])
+        (zero_extend:SI (reg:HI 3 r3 [orig:195 D.1568 ] [195]))) integer_fft.c:163 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 318 317 319 (set (reg:SI 3 r3 [orig:197 j.23 ] [197])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:164 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 319 318 320 (set (reg:SI 3 r3 [orig:198 D.1571 ] [198])
+        (ashift:SI (reg:SI 3 r3 [orig:197 j.23 ] [197])
+            (const_int 1 [0x1]))) integer_fft.c:164 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 320 319 321 (set (reg:SI 2 r2 [346])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:164 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 321 320 322 (set (reg/f:SI 3 r3 [orig:199 D.1572 ] [199])
+        (plus:SI (reg:SI 2 r2 [346])
+            (reg:SI 3 r3 [orig:198 D.1571 ] [198]))) integer_fft.c:164 4 {*arm_addsi3}
+     (nil))
+
+(insn 322 321 323 (set (reg:SI 3 r3 [orig:200 D.1573 ] [200])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [orig:199 D.1572 ] [199]) [0 *D.1572_124+0 S2 A16]))) integer_fft.c:164 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 323 322 324 (set (reg:SI 2 r2 [347])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -48 [0xffffffffffffffd0])) [0 wi+0 S2 A16]))) integer_fft.c:164 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 324 323 325 (set (reg:SI 3 r3 [348])
+        (sign_extend:SI (reg:HI 3 r3 [orig:200 D.1573 ] [200]))) integer_fft.c:164 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 325 324 326 (set (reg:SI 0 r0)
+        (reg:SI 2 r2 [347])) integer_fft.c:164 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 326 325 327 (set (reg:SI 1 r1)
+        (reg:SI 3 r3 [348])) integer_fft.c:164 625 {*arm_movsi_vfp}
+     (nil))
+
+(call_insn 327 326 328 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("fix_mpy") [flags 0x3]  <function_decl 0xb6b5c900 fix_mpy>) [0 S4 A32])
+                    (const_int 0 [0])))
+            (use (const_int 0 [0]))
+            (clobber (reg:SI 14 lr))
+        ]) integer_fft.c:164 236 {*call_value_symbol}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 328 327 330 (set (reg:SI 3 r3 [349])
+        (reg:SI 0 r0)) integer_fft.c:164 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 330 328 331 (set (reg:SI 3 r3 [orig:202 D.1575 ] [202])
+        (zero_extend:SI (reg:HI 3 r3 [orig:201 D.1574 ] [201]))) integer_fft.c:163 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 331 330 332 (set (reg:SI 3 r3 [350])
+        (plus:SI (reg:SI 4 r4 [orig:196 D.1569 ] [196])
+            (reg:SI 3 r3 [orig:202 D.1575 ] [202]))) integer_fft.c:163 4 {*arm_addsi3}
+     (nil))
+
+(insn 332 331 333 (set (reg:SI 3 r3 [orig:203 D.1576 ] [203])
+        (zero_extend:SI (reg:HI 3 r3 [350]))) integer_fft.c:163 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 333 332 334 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -60 [0xffffffffffffffc4])) [0 ti+0 S2 A16])
+        (reg:HI 3 r3 [orig:203 D.1576 ] [203])) integer_fft.c:163 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 334 333 335 (set (reg:SI 3 r3 [orig:204 i.24 ] [204])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:165 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 335 334 336 (set (reg:SI 3 r3 [orig:205 D.1578 ] [205])
+        (ashift:SI (reg:SI 3 r3 [orig:204 i.24 ] [204])
+            (const_int 1 [0x1]))) integer_fft.c:165 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 336 335 337 (set (reg:SI 2 r2 [351])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:165 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 337 336 338 (set (reg/f:SI 3 r3 [orig:206 D.1579 ] [206])
+        (plus:SI (reg:SI 2 r2 [351])
+            (reg:SI 3 r3 [orig:205 D.1578 ] [205]))) integer_fft.c:165 4 {*arm_addsi3}
+     (nil))
+
+(insn 338 337 339 (set (reg:HI 3 r3 [352])
+        (mem:HI (reg/f:SI 3 r3 [orig:206 D.1579 ] [206]) [0 *D.1579_132+0 S2 A16])) integer_fft.c:165 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 339 338 340 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -42 [0xffffffffffffffd6])) [0 qr+0 S2 A16])
+        (reg:HI 3 r3 [352])) integer_fft.c:165 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 340 339 341 (set (reg:SI 3 r3 [orig:207 i.25 ] [207])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:166 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 341 340 342 (set (reg:SI 3 r3 [orig:208 D.1581 ] [208])
+        (ashift:SI (reg:SI 3 r3 [orig:207 i.25 ] [207])
+            (const_int 1 [0x1]))) integer_fft.c:166 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 342 341 343 (set (reg:SI 2 r2 [353])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:166 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 343 342 344 (set (reg/f:SI 3 r3 [orig:209 D.1582 ] [209])
+        (plus:SI (reg:SI 2 r2 [353])
+            (reg:SI 3 r3 [orig:208 D.1581 ] [208]))) integer_fft.c:166 4 {*arm_addsi3}
+     (nil))
+
+(insn 344 343 345 (set (reg:HI 3 r3 [354])
+        (mem:HI (reg/f:SI 3 r3 [orig:209 D.1582 ] [209]) [0 *D.1582_136+0 S2 A16])) integer_fft.c:166 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 345 344 346 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -44 [0xffffffffffffffd4])) [0 qi+0 S2 A16])
+        (reg:HI 3 r3 [354])) integer_fft.c:166 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 346 345 347 (set (reg:SI 3 r3 [355])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -40 [0xffffffffffffffd8])) [0 shift+0 S4 A32])) integer_fft.c:167 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 347 346 348 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [355])
+            (const_int 0 [0]))) integer_fft.c:167 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 348 347 349 (set (pc)
+        (if_then_else (eq (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 356)
+            (pc))) integer_fft.c:167 211 {*arm_cond_branch}
+     (nil)
+ -> 356)
+
+(note 349 348 350 [bb 33] NOTE_INSN_BASIC_BLOCK)
+
+(insn 350 349 351 (set (reg:SI 3 r3 [356])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -42 [0xffffffffffffffd6])) [0 qr+0 S2 A16]))) integer_fft.c:168 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 351 350 352 (set (reg:SI 3 r3 [357])
+        (ashiftrt:SI (reg:SI 3 r3 [356])
+            (const_int 1 [0x1]))) integer_fft.c:168 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 352 351 353 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -42 [0xffffffffffffffd6])) [0 qr+0 S2 A16])
+        (reg:HI 3 r3 [357])) integer_fft.c:168 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 353 352 354 (set (reg:SI 3 r3 [358])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -44 [0xffffffffffffffd4])) [0 qi+0 S2 A16]))) integer_fft.c:169 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 354 353 355 (set (reg:SI 3 r3 [359])
+        (ashiftrt:SI (reg:SI 3 r3 [358])
+            (const_int 1 [0x1]))) integer_fft.c:169 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 355 354 356 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -44 [0xffffffffffffffd4])) [0 qi+0 S2 A16])
+        (reg:HI 3 r3 [359])) integer_fft.c:169 178 {*movhi_insn_arch4}
+     (nil))
+
+(code_label 356 355 357 23 "" [1 uses])
+
+(note 357 356 358 [bb 34] NOTE_INSN_BASIC_BLOCK)
+
+(insn 358 357 359 (set (reg:SI 3 r3 [orig:210 j.26 ] [210])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:171 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 359 358 360 (set (reg:SI 3 r3 [orig:211 D.1586 ] [211])
+        (ashift:SI (reg:SI 3 r3 [orig:210 j.26 ] [210])
+            (const_int 1 [0x1]))) integer_fft.c:171 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 360 359 361 (set (reg:SI 2 r2 [360])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:171 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 361 360 362 (set (reg/f:SI 3 r3 [orig:212 D.1587 ] [212])
+        (plus:SI (reg:SI 2 r2 [360])
+            (reg:SI 3 r3 [orig:211 D.1586 ] [211]))) integer_fft.c:171 4 {*arm_addsi3}
+     (nil))
+
+(insn 362 361 363 (set (reg:SI 1 r1 [orig:213 qr.27 ] [213])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -42 [0xffffffffffffffd6])) [0 qr+0 S2 A16]))) integer_fft.c:171 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 363 362 364 (set (reg:SI 2 r2 [orig:214 tr.28 ] [214])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -58 [0xffffffffffffffc6])) [0 tr+0 S2 A16]))) integer_fft.c:171 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 364 363 365 (set (reg:SI 2 r2 [361])
+        (minus:SI (reg:SI 1 r1 [orig:213 qr.27 ] [213])
+            (reg:SI 2 r2 [orig:214 tr.28 ] [214]))) integer_fft.c:171 29 {*arm_subsi3_insn}
+     (nil))
+
+(insn 365 364 366 (set (reg:SI 2 r2 [orig:215 D.1590 ] [215])
+        (zero_extend:SI (reg:HI 2 r2 [361]))) integer_fft.c:171 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 366 365 367 (set (reg:SI 2 r2 [orig:216 D.1591 ] [216])
+        (zero_extend:SI (reg:HI 2 r2 [orig:215 D.1590 ] [215]))) integer_fft.c:171 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 367 366 368 (set (mem:HI (reg/f:SI 3 r3 [orig:212 D.1587 ] [212]) [0 *D.1587_142+0 S2 A16])
+        (reg:HI 2 r2 [orig:216 D.1591 ] [216])) integer_fft.c:171 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 368 367 369 (set (reg:SI 3 r3 [orig:217 j.29 ] [217])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 j+0 S4 A32])) integer_fft.c:172 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 369 368 370 (set (reg:SI 3 r3 [orig:218 D.1593 ] [218])
+        (ashift:SI (reg:SI 3 r3 [orig:217 j.29 ] [217])
+            (const_int 1 [0x1]))) integer_fft.c:172 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 370 369 371 (set (reg:SI 2 r2 [362])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:172 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 371 370 372 (set (reg/f:SI 3 r3 [orig:219 D.1594 ] [219])
+        (plus:SI (reg:SI 2 r2 [362])
+            (reg:SI 3 r3 [orig:218 D.1593 ] [218]))) integer_fft.c:172 4 {*arm_addsi3}
+     (nil))
+
+(insn 372 371 373 (set (reg:SI 1 r1 [orig:220 qi.30 ] [220])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -44 [0xffffffffffffffd4])) [0 qi+0 S2 A16]))) integer_fft.c:172 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 373 372 374 (set (reg:SI 2 r2 [orig:221 ti.31 ] [221])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -60 [0xffffffffffffffc4])) [0 ti+0 S2 A16]))) integer_fft.c:172 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 374 373 375 (set (reg:SI 2 r2 [363])
+        (minus:SI (reg:SI 1 r1 [orig:220 qi.30 ] [220])
+            (reg:SI 2 r2 [orig:221 ti.31 ] [221]))) integer_fft.c:172 29 {*arm_subsi3_insn}
+     (nil))
+
+(insn 375 374 376 (set (reg:SI 2 r2 [orig:222 D.1597 ] [222])
+        (zero_extend:SI (reg:HI 2 r2 [363]))) integer_fft.c:172 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 376 375 377 (set (reg:SI 2 r2 [orig:223 D.1598 ] [223])
+        (zero_extend:SI (reg:HI 2 r2 [orig:222 D.1597 ] [222]))) integer_fft.c:172 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 377 376 378 (set (mem:HI (reg/f:SI 3 r3 [orig:219 D.1594 ] [219]) [0 *D.1594_149+0 S2 A16])
+        (reg:HI 2 r2 [orig:223 D.1598 ] [223])) integer_fft.c:172 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 378 377 379 (set (reg:SI 3 r3 [orig:224 i.32 ] [224])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:173 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 379 378 380 (set (reg:SI 3 r3 [orig:225 D.1600 ] [225])
+        (ashift:SI (reg:SI 3 r3 [orig:224 i.32 ] [224])
+            (const_int 1 [0x1]))) integer_fft.c:173 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 380 379 381 (set (reg:SI 2 r2 [364])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -72 [0xffffffffffffffb8])) [0 fr+0 S4 A32])) integer_fft.c:173 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 381 380 382 (set (reg/f:SI 3 r3 [orig:226 D.1601 ] [226])
+        (plus:SI (reg:SI 2 r2 [364])
+            (reg:SI 3 r3 [orig:225 D.1600 ] [225]))) integer_fft.c:173 4 {*arm_addsi3}
+     (nil))
+
+(insn 382 381 383 (set (reg:SI 1 r1 [orig:227 qr.33 ] [227])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -42 [0xffffffffffffffd6])) [0 qr+0 S2 A16]))) integer_fft.c:173 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 383 382 384 (set (reg:SI 2 r2 [orig:228 tr.34 ] [228])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -58 [0xffffffffffffffc6])) [0 tr+0 S2 A16]))) integer_fft.c:173 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 384 383 385 (set (reg:SI 2 r2 [365])
+        (plus:SI (reg:SI 1 r1 [orig:227 qr.33 ] [227])
+            (reg:SI 2 r2 [orig:228 tr.34 ] [228]))) integer_fft.c:173 4 {*arm_addsi3}
+     (nil))
+
+(insn 385 384 386 (set (reg:SI 2 r2 [orig:229 D.1604 ] [229])
+        (zero_extend:SI (reg:HI 2 r2 [365]))) integer_fft.c:173 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 386 385 387 (set (reg:SI 2 r2 [orig:230 D.1605 ] [230])
+        (zero_extend:SI (reg:HI 2 r2 [orig:229 D.1604 ] [229]))) integer_fft.c:173 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 387 386 388 (set (mem:HI (reg/f:SI 3 r3 [orig:226 D.1601 ] [226]) [0 *D.1601_156+0 S2 A16])
+        (reg:HI 2 r2 [orig:230 D.1605 ] [230])) integer_fft.c:173 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 388 387 389 (set (reg:SI 3 r3 [orig:231 i.35 ] [231])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:174 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 389 388 390 (set (reg:SI 3 r3 [orig:232 D.1607 ] [232])
+        (ashift:SI (reg:SI 3 r3 [orig:231 i.35 ] [231])
+            (const_int 1 [0x1]))) integer_fft.c:174 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 390 389 391 (set (reg:SI 2 r2 [366])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -76 [0xffffffffffffffb4])) [0 fi+0 S4 A32])) integer_fft.c:174 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 391 390 392 (set (reg/f:SI 3 r3 [orig:233 D.1608 ] [233])
+        (plus:SI (reg:SI 2 r2 [366])
+            (reg:SI 3 r3 [orig:232 D.1607 ] [232]))) integer_fft.c:174 4 {*arm_addsi3}
+     (nil))
+
+(insn 392 391 393 (set (reg:SI 1 r1 [orig:234 qi.36 ] [234])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -44 [0xffffffffffffffd4])) [0 qi+0 S2 A16]))) integer_fft.c:174 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 393 392 394 (set (reg:SI 2 r2 [orig:235 ti.37 ] [235])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -60 [0xffffffffffffffc4])) [0 ti+0 S2 A16]))) integer_fft.c:174 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 394 393 395 (set (reg:SI 2 r2 [367])
+        (plus:SI (reg:SI 1 r1 [orig:234 qi.36 ] [234])
+            (reg:SI 2 r2 [orig:235 ti.37 ] [235]))) integer_fft.c:174 4 {*arm_addsi3}
+     (nil))
+
+(insn 395 394 396 (set (reg:SI 2 r2 [orig:236 D.1611 ] [236])
+        (zero_extend:SI (reg:HI 2 r2 [367]))) integer_fft.c:174 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 396 395 397 (set (reg:SI 2 r2 [orig:237 D.1612 ] [237])
+        (zero_extend:SI (reg:HI 2 r2 [orig:236 D.1611 ] [236]))) integer_fft.c:174 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 397 396 398 (set (mem:HI (reg/f:SI 3 r3 [orig:233 D.1608 ] [233]) [0 *D.1608_163+0 S2 A16])
+        (reg:HI 2 r2 [orig:237 D.1612 ] [237])) integer_fft.c:174 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 398 397 399 (set (reg:SI 2 r2 [368])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:159 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 399 398 400 (set (reg:SI 3 r3 [369])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -64 [0xffffffffffffffc0])) [0 istep+0 S4 A32])) integer_fft.c:159 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 400 399 401 (set (reg:SI 3 r3 [370])
+        (plus:SI (reg:SI 2 r2 [368])
+            (reg:SI 3 r3 [369]))) integer_fft.c:159 4 {*arm_addsi3}
+     (nil))
+
+(insn 401 400 402 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [370])) integer_fft.c:159 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 402 401 403 22 "" [1 uses])
+
+(note 403 402 405 [bb 35] NOTE_INSN_BASIC_BLOCK)
+
+(insn 405 403 406 (set (reg:SI 2 r2 [371])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 i+0 S4 A32])) integer_fft.c:159 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 406 405 407 (set (reg:SI 3 r3 [372])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -52 [0xffffffffffffffcc])) [0 n+0 S4 A32])) integer_fft.c:159 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 407 406 408 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [371])
+            (reg:SI 3 r3 [372]))) integer_fft.c:159 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 408 407 409 (set (pc)
+        (if_then_else (lt (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 404)
+            (pc))) integer_fft.c:159 211 {*arm_cond_branch}
+     (nil)
+ -> 404)
+
+(note 409 408 410 [bb 36] NOTE_INSN_BASIC_BLOCK)
+
+(insn 410 409 411 (set (reg:SI 3 r3 [373])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:148 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 411 410 412 (set (reg:SI 3 r3 [374])
+        (plus:SI (reg:SI 3 r3 [373])
+            (const_int 1 [0x1]))) integer_fft.c:148 4 {*arm_addsi3}
+     (nil))
+
+(insn 412 411 413 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])
+        (reg:SI 3 r3 [374])) integer_fft.c:148 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 413 412 414 19 "" [1 uses])
+
+(note 414 413 416 [bb 37] NOTE_INSN_BASIC_BLOCK)
+
+(insn 416 414 417 (set (reg:SI 2 r2 [375])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -80 [0xffffffffffffffb0])) [0 m+0 S4 A32])) integer_fft.c:148 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 417 416 418 (set (reg:SI 3 r3 [376])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])) integer_fft.c:148 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 418 417 419 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [375])
+            (reg:SI 3 r3 [376]))) integer_fft.c:148 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 419 418 420 (set (pc)
+        (if_then_else (lt (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 415)
+            (pc))) integer_fft.c:148 211 {*arm_cond_branch}
+     (nil)
+ -> 415)
+
+(note 420 419 421 [bb 38] NOTE_INSN_BASIC_BLOCK)
+
+(insn 421 420 422 (set (reg:SI 3 r3 [377])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 k+0 S4 A32])) integer_fft.c:177 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 422 421 423 (set (reg:SI 3 r3 [378])
+        (plus:SI (reg:SI 3 r3 [377])
+            (const_int -1 [0xffffffffffffffff]))) integer_fft.c:177 4 {*arm_addsi3}
+     (nil))
+
+(insn 423 422 424 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 k+0 S4 A32])
+        (reg:SI 3 r3 [378])) integer_fft.c:177 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 424 423 425 (set (reg:SI 3 r3 [379])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -64 [0xffffffffffffffc0])) [0 istep+0 S4 A32])) integer_fft.c:178 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 425 424 426 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])
+        (reg:SI 3 r3 [379])) integer_fft.c:178 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 426 425 427 9 "" [1 uses])
+
+(note 427 426 429 [bb 39] NOTE_INSN_BASIC_BLOCK)
+
+(insn 429 427 430 (set (reg:SI 2 r2 [380])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 l+0 S4 A32])) integer_fft.c:120 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 430 429 431 (set (reg:SI 3 r3 [381])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -52 [0xffffffffffffffcc])) [0 n+0 S4 A32])) integer_fft.c:120 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 431 430 432 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [380])
+            (reg:SI 3 r3 [381]))) integer_fft.c:120 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 432 431 433 (set (pc)
+        (if_then_else (lt (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 428)
+            (pc))) integer_fft.c:120 211 {*arm_cond_branch}
+     (nil)
+ -> 428)
+
+(note 433 432 434 [bb 40] NOTE_INSN_BASIC_BLOCK)
+
+(insn 434 433 435 (set (reg:SI 3 r3 [orig:134 D.1489 ] [134])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -36 [0xffffffffffffffdc])) [0 scale+0 S4 A32])) integer_fft.c:181 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 435 434 436 3 "" [1 uses])
+
+(note 436 435 441 [bb 41] NOTE_INSN_BASIC_BLOCK)
+
+(insn 441 436 444 (set (reg/i:SI 0 r0)
+        (reg:SI 3 r3 [orig:238 <retval> ] [238])) integer_fft.c:182 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 444 441 476 (use (reg/i:SI 0 r0)) integer_fft.c:182 -1
+     (nil))
+
+(note 476 444 477 NOTE_INSN_EPILOGUE_BEG)
+
+(jump_insn 477 476 478 (unspec_volatile [
+            (return)
+        ] 1) integer_fft.c:182 305 {*epilogue_insns}
+     (nil))
+
+(barrier 478 477 479)
+
+(code_label 479 478 480 29 "" [0 uses])
+
+(insn 480 479 481 (unspec_volatile [
+            (const_int 0 [0])
+        ] 2) -1
+     (nil))
+
+(code_label 481 480 482 28 "" [0 uses])
+
+(insn 482 481 483 (unspec_volatile [
+            (const_int 16383 [0x3fff])
+        ] 6) -1
+     (nil))
+
+(insn 483 482 484 (unspec_volatile [
+            (symbol_ref:SI ("Sinewave") [flags 0x2]  <var_decl 0xb6b62180 Sinewave>)
+        ] 6) -1
+     (nil))
+
+(insn 484 483 485 (unspec_volatile [
+            (const_int 0 [0])
+        ] 3) -1
+     (nil))
+
+(barrier 485 484 470)
+
+(note 470 485 0 NOTE_INSN_DELETED)
+
+;; Function window (window)
+
+(note 1 0 5 NOTE_INSN_DELETED)
+
+(note 5 1 117 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn/f 117 5 118 (parallel [
+            (set (mem/c:BLK (pre_modify:SI (reg/f:SI 13 sp)
+                        (plus:SI (reg/f:SI 13 sp)
+                            (const_int -8 [0xfffffffffffffff8]))) [0 A8])
+                (unspec:BLK [
+                        (reg/f:SI 11 fp)
+                    ] 2))
+            (use (reg:SI 14 lr))
+        ]) integer_fft.c:187 309 {*push_multi}
+     (expr_list:REG_FRAME_RELATED_EXPR (sequence [
+                (set/f (reg/f:SI 13 sp)
+                    (plus:SI (reg/f:SI 13 sp)
+                        (const_int -8 [0xfffffffffffffff8])))
+                (set/f (mem/c:SI (reg/f:SI 13 sp) [0 S4 A32])
+                    (reg/f:SI 11 fp))
+                (set/f (mem/c:SI (plus:SI (reg/f:SI 13 sp)
+                            (const_int 4 [0x4])) [0 S4 A32])
+                    (reg:SI 14 lr))
+            ])
+        (nil)))
+
+(insn/f 118 117 119 (set (reg/f:SI 11 fp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int 4 [0x4]))) integer_fft.c:187 4 {*arm_addsi3}
+     (nil))
+
+(insn/f 119 118 120 (set (reg/f:SI 13 sp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int -24 [0xffffffffffffffe8]))) integer_fft.c:187 4 {*arm_addsi3}
+     (nil))
+
+(insn 120 119 121 (set (mem:BLK (scratch) [0 A8])
+        (unspec:BLK [
+                (reg/f:SI 13 sp)
+                (reg/f:SI 11 fp)
+            ] 5)) integer_fft.c:187 310 {stack_tie}
+     (nil))
+
+(note 121 120 2 NOTE_INSN_PROLOGUE_END)
+
+(insn 2 121 3 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 fr+0 S4 A32])
+        (reg:SI 0 r0 [ fr ])) integer_fft.c:187 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 3 2 4 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 n+0 S4 A32])
+        (reg:SI 1 r1 [ n ])) integer_fft.c:187 625 {*arm_movsi_vfp}
+     (nil))
+
+(note 4 3 7 NOTE_INSN_FUNCTION_BEG)
+
+(insn 7 4 8 (set (reg:SI 0 r0)
+        (const_int 1024 [0x400])) integer_fft.c:190 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 8 7 9 (set (reg:SI 1 r1)
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 n+0 S4 A32])) integer_fft.c:190 625 {*arm_movsi_vfp}
+     (nil))
+
+(call_insn/u 9 8 10 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("__aeabi_idiv") [flags 0x41]) [0 S4 A32])
+                    (const_int 0 [0])))
+            (use (const_int 0 [0]))
+            (clobber (reg:SI 14 lr))
+        ]) integer_fft.c:190 236 {*call_value_symbol}
+     (expr_list:REG_EH_REGION (const_int -2147483648 [0xffffffff80000000])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 10 9 11 (set (reg:SI 3 r3 [167])
+        (reg:SI 0 r0)) integer_fft.c:190 625 {*arm_movsi_vfp}
+     (expr_list:REG_EQUAL (div:SI (const_int 1024 [0x400])
+            (mem/c/i:SI (plus:SI (reg/f:SI 25 sfp)
+                    (const_int -24 [0xffffffffffffffe8])) [0 n+0 S4 A32]))
+        (nil)))
+
+(insn 11 10 12 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 j+0 S4 A32])
+        (reg:SI 3 r3 [167])) integer_fft.c:190 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 12 11 13 (set (reg:SI 3 r3 [168])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 n+0 S4 A32])) integer_fft.c:191 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 13 12 14 (set (reg:SI 3 r3 [169])
+        (ashiftrt:SI (reg:SI 3 r3 [168])
+            (const_int 1 [0x1]))) integer_fft.c:191 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 14 13 15 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 n+0 S4 A32])
+        (reg:SI 3 r3 [169])) integer_fft.c:191 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 15 14 16 (set (reg:SI 3 r3 [170])
+        (const_int 0 [0])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 16 15 17 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [170])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 17 16 18 (set (reg:SI 3 r3 [171])
+        (const_int 256 [0x100])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 18 17 112 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 k+0 S4 A32])
+        (reg:SI 3 r3 [171])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 112 18 113 (set (pc)
+        (label_ref 53)) integer_fft.c:192 223 {*arm_jump}
+     (nil)
+ -> 53)
+
+(barrier 113 112 55)
+
+(code_label 55 113 21 32 "" [1 uses])
+
+(note 21 55 22 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(insn 22 21 23 (set (reg:SI 3 r3 [orig:134 i.5 ] [134])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:193 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 23 22 24 (set (reg:SI 3 r3 [orig:135 D.1458 ] [135])
+        (ashift:SI (reg:SI 3 r3 [orig:134 i.5 ] [134])
+            (const_int 1 [0x1]))) integer_fft.c:193 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 24 23 25 (set (reg:SI 2 r2 [172])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 fr+0 S4 A32])) integer_fft.c:193 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 25 24 26 (set (reg/f:SI 3 r3 [orig:136 D.1459 ] [136])
+        (plus:SI (reg:SI 2 r2 [172])
+            (reg:SI 3 r3 [orig:135 D.1458 ] [135]))) integer_fft.c:193 4 {*arm_addsi3}
+     (nil))
+
+(insn 26 25 27 (set (reg:SI 2 r2 [orig:137 i.6 ] [137])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:193 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 27 26 28 (set (reg:SI 2 r2 [orig:138 D.1461 ] [138])
+        (ashift:SI (reg:SI 2 r2 [orig:137 i.6 ] [137])
+            (const_int 1 [0x1]))) integer_fft.c:193 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 28 27 29 (set (reg:SI 1 r1 [173])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 fr+0 S4 A32])) integer_fft.c:193 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 29 28 30 (set (reg/f:SI 2 r2 [orig:139 D.1462 ] [139])
+        (plus:SI (reg:SI 1 r1 [173])
+            (reg:SI 2 r2 [orig:138 D.1461 ] [138]))) integer_fft.c:193 4 {*arm_addsi3}
+     (nil))
+
+(insn 30 29 31 (set (reg:SI 2 r2 [orig:140 D.1463 ] [140])
+        (zero_extend:SI (mem:HI (reg/f:SI 2 r2 [orig:139 D.1462 ] [139]) [0 *D.1462_16+0 S2 A16]))) integer_fft.c:193 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 31 30 32 (set (reg:SI 2 r2 [orig:141 D.1464 ] [141])
+        (sign_extend:SI (reg:HI 2 r2 [orig:140 D.1463 ] [140]))) integer_fft.c:193 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 32 31 33 (set (reg/f:SI 0 r0 [174])
+        (mem:SI (label_ref 127) [0 S4 A32])) integer_fft.c:193 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 33 32 34 (set (reg:SI 1 r1 [175])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 k+0 S4 A32])) integer_fft.c:193 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 34 33 35 (set (reg:SI 1 r1 [176])
+        (ashift:SI (reg:SI 1 r1 [175])
+            (const_int 1 [0x1]))) integer_fft.c:193 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 35 34 36 (set (reg/f:SI 1 r1 [177])
+        (plus:SI (reg/f:SI 0 r0 [174])
+            (reg:SI 1 r1 [176]))) integer_fft.c:193 4 {*arm_addsi3}
+     (nil))
+
+(insn 36 35 37 (set (reg:SI 1 r1 [orig:142 D.1465 ] [142])
+        (zero_extend:SI (mem/s/j:HI (reg/f:SI 1 r1 [177]) [0 Sinewave S2 A16]))) integer_fft.c:193 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 37 36 38 (set (reg:SI 1 r1 [178])
+        (sign_extend:SI (reg:HI 1 r1 [orig:142 D.1465 ] [142]))) integer_fft.c:193 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 38 37 39 (set (reg:SI 1 r1 [179])
+        (ashiftrt:SI (reg:SI 1 r1 [178])
+            (const_int 1 [0x1]))) integer_fft.c:193 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 39 38 40 (set (reg:SI 1 r1 [orig:143 D.1466 ] [143])
+        (zero_extend:SI (reg:HI 1 r1 [179]))) integer_fft.c:193 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 40 39 41 (set (reg:SI 1 r1 [orig:144 D.1467 ] [144])
+        (sign_extend:SI (reg:HI 1 r1 [orig:143 D.1466 ] [143]))) integer_fft.c:193 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 41 40 42 (set (reg:SI 1 r1 [orig:145 D.1468 ] [145])
+        (minus:SI (const_int 16384 [0x4000])
+            (reg:SI 1 r1 [orig:144 D.1467 ] [144]))) integer_fft.c:193 29 {*arm_subsi3_insn}
+     (nil))
+
+(insn 42 41 43 (set (reg:SI 2 r2 [orig:146 D.1469 ] [146])
+        (mult:SI (reg:SI 1 r1 [orig:145 D.1468 ] [145])
+            (reg:SI 2 r2 [orig:141 D.1464 ] [141]))) integer_fft.c:193 34 {*arm_mulsi3_v6}
+     (nil))
+
+(insn 43 42 44 (set (reg:SI 2 r2 [orig:147 D.1470 ] [147])
+        (ashiftrt:SI (reg:SI 2 r2 [orig:146 D.1469 ] [146])
+            (const_int 15 [0xf]))) integer_fft.c:193 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 44 43 45 (set (reg:SI 2 r2 [orig:148 D.1471 ] [148])
+        (zero_extend:SI (reg:HI 2 r2 [orig:147 D.1470 ] [147]))) integer_fft.c:193 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 45 44 46 (set (mem:HI (reg/f:SI 3 r3 [orig:136 D.1459 ] [136]) [0 *D.1459_13+0 S2 A16])
+        (reg:HI 2 r2 [orig:148 D.1471 ] [148])) integer_fft.c:193 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 46 45 47 (set (reg:SI 3 r3 [180])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 47 46 48 (set (reg:SI 3 r3 [181])
+        (plus:SI (reg:SI 3 r3 [180])
+            (const_int 1 [0x1]))) integer_fft.c:192 4 {*arm_addsi3}
+     (nil))
+
+(insn 48 47 49 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [181])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 49 48 50 (set (reg:SI 2 r2 [182])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 k+0 S4 A32])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 50 49 51 (set (reg:SI 3 r3 [183])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 j+0 S4 A32])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 51 50 52 (set (reg:SI 3 r3 [184])
+        (plus:SI (reg:SI 2 r2 [182])
+            (reg:SI 3 r3 [183]))) integer_fft.c:192 4 {*arm_addsi3}
+     (nil))
+
+(insn 52 51 53 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 k+0 S4 A32])
+        (reg:SI 3 r3 [184])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 53 52 54 31 "" [1 uses])
+
+(note 54 53 56 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 56 54 57 (set (reg:SI 2 r2 [185])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 57 56 58 (set (reg:SI 3 r3 [186])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 n+0 S4 A32])) integer_fft.c:192 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 58 57 59 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [185])
+            (reg:SI 3 r3 [186]))) integer_fft.c:192 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 59 58 60 (set (pc)
+        (if_then_else (lt (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 55)
+            (pc))) integer_fft.c:192 211 {*arm_cond_branch}
+     (nil)
+ -> 55)
+
+(note 60 59 61 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(insn 61 60 62 (set (reg:SI 3 r3 [187])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 n+0 S4 A32])) integer_fft.c:194 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 62 61 63 (set (reg:SI 3 r3 [188])
+        (ashift:SI (reg:SI 3 r3 [187])
+            (const_int 1 [0x1]))) integer_fft.c:194 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 63 62 64 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 n+0 S4 A32])
+        (reg:SI 3 r3 [188])) integer_fft.c:194 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 64 63 65 (set (reg:SI 2 r2 [189])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 k+0 S4 A32])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 65 64 66 (set (reg:SI 3 r3 [190])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 j+0 S4 A32])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 66 65 67 (set (reg:SI 3 r3 [191])
+        (minus:SI (reg:SI 2 r2 [189])
+            (reg:SI 3 r3 [190]))) integer_fft.c:195 29 {*arm_subsi3_insn}
+     (nil))
+
+(insn 67 66 114 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 k+0 S4 A32])
+        (reg:SI 3 r3 [191])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 114 67 115 (set (pc)
+        (label_ref 102)) integer_fft.c:195 223 {*arm_jump}
+     (nil)
+ -> 102)
+
+(barrier 115 114 104)
+
+(code_label 104 115 70 34 "" [1 uses])
+
+(note 70 104 71 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(insn 71 70 72 (set (reg:SI 3 r3 [orig:149 i.7 ] [149])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:196 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 72 71 73 (set (reg:SI 3 r3 [orig:150 D.1473 ] [150])
+        (ashift:SI (reg:SI 3 r3 [orig:149 i.7 ] [149])
+            (const_int 1 [0x1]))) integer_fft.c:196 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 73 72 74 (set (reg:SI 2 r2 [192])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 fr+0 S4 A32])) integer_fft.c:196 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 74 73 75 (set (reg/f:SI 3 r3 [orig:151 D.1474 ] [151])
+        (plus:SI (reg:SI 2 r2 [192])
+            (reg:SI 3 r3 [orig:150 D.1473 ] [150]))) integer_fft.c:196 4 {*arm_addsi3}
+     (nil))
+
+(insn 75 74 76 (set (reg:SI 2 r2 [orig:152 i.8 ] [152])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:196 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 76 75 77 (set (reg:SI 2 r2 [orig:153 D.1476 ] [153])
+        (ashift:SI (reg:SI 2 r2 [orig:152 i.8 ] [152])
+            (const_int 1 [0x1]))) integer_fft.c:196 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 77 76 78 (set (reg:SI 1 r1 [193])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 fr+0 S4 A32])) integer_fft.c:196 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 78 77 79 (set (reg/f:SI 2 r2 [orig:154 D.1477 ] [154])
+        (plus:SI (reg:SI 1 r1 [193])
+            (reg:SI 2 r2 [orig:153 D.1476 ] [153]))) integer_fft.c:196 4 {*arm_addsi3}
+     (nil))
+
+(insn 79 78 80 (set (reg:SI 2 r2 [orig:155 D.1478 ] [155])
+        (zero_extend:SI (mem:HI (reg/f:SI 2 r2 [orig:154 D.1477 ] [154]) [0 *D.1477_35+0 S2 A16]))) integer_fft.c:196 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 80 79 81 (set (reg:SI 2 r2 [orig:156 D.1479 ] [156])
+        (sign_extend:SI (reg:HI 2 r2 [orig:155 D.1478 ] [155]))) integer_fft.c:196 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 81 80 82 (set (reg/f:SI 0 r0 [194])
+        (mem:SI (label_ref 127) [0 S4 A32])) integer_fft.c:196 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 82 81 83 (set (reg:SI 1 r1 [195])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 k+0 S4 A32])) integer_fft.c:196 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 83 82 84 (set (reg:SI 1 r1 [196])
+        (ashift:SI (reg:SI 1 r1 [195])
+            (const_int 1 [0x1]))) integer_fft.c:196 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 84 83 85 (set (reg/f:SI 1 r1 [197])
+        (plus:SI (reg/f:SI 0 r0 [194])
+            (reg:SI 1 r1 [196]))) integer_fft.c:196 4 {*arm_addsi3}
+     (nil))
+
+(insn 85 84 86 (set (reg:SI 1 r1 [orig:157 D.1480 ] [157])
+        (zero_extend:SI (mem/s/j:HI (reg/f:SI 1 r1 [197]) [0 Sinewave S2 A16]))) integer_fft.c:196 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 86 85 87 (set (reg:SI 1 r1 [198])
+        (sign_extend:SI (reg:HI 1 r1 [orig:157 D.1480 ] [157]))) integer_fft.c:196 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 87 86 88 (set (reg:SI 1 r1 [199])
+        (ashiftrt:SI (reg:SI 1 r1 [198])
+            (const_int 1 [0x1]))) integer_fft.c:196 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 88 87 89 (set (reg:SI 1 r1 [orig:158 D.1481 ] [158])
+        (zero_extend:SI (reg:HI 1 r1 [199]))) integer_fft.c:196 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 89 88 90 (set (reg:SI 1 r1 [orig:159 D.1482 ] [159])
+        (sign_extend:SI (reg:HI 1 r1 [orig:158 D.1481 ] [158]))) integer_fft.c:196 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 90 89 91 (set (reg:SI 1 r1 [orig:160 D.1483 ] [160])
+        (minus:SI (const_int 16384 [0x4000])
+            (reg:SI 1 r1 [orig:159 D.1482 ] [159]))) integer_fft.c:196 29 {*arm_subsi3_insn}
+     (nil))
+
+(insn 91 90 92 (set (reg:SI 2 r2 [orig:161 D.1484 ] [161])
+        (mult:SI (reg:SI 1 r1 [orig:160 D.1483 ] [160])
+            (reg:SI 2 r2 [orig:156 D.1479 ] [156]))) integer_fft.c:196 34 {*arm_mulsi3_v6}
+     (nil))
+
+(insn 92 91 93 (set (reg:SI 2 r2 [orig:162 D.1485 ] [162])
+        (ashiftrt:SI (reg:SI 2 r2 [orig:161 D.1484 ] [161])
+            (const_int 15 [0xf]))) integer_fft.c:196 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 93 92 94 (set (reg:SI 2 r2 [orig:163 D.1486 ] [163])
+        (zero_extend:SI (reg:HI 2 r2 [orig:162 D.1485 ] [162]))) integer_fft.c:196 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 94 93 95 (set (mem:HI (reg/f:SI 3 r3 [orig:151 D.1474 ] [151]) [0 *D.1474_32+0 S2 A16])
+        (reg:HI 2 r2 [orig:163 D.1486 ] [163])) integer_fft.c:196 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 95 94 96 (set (reg:SI 3 r3 [200])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 96 95 97 (set (reg:SI 3 r3 [201])
+        (plus:SI (reg:SI 3 r3 [200])
+            (const_int 1 [0x1]))) integer_fft.c:195 4 {*arm_addsi3}
+     (nil))
+
+(insn 97 96 98 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [201])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 98 97 99 (set (reg:SI 2 r2 [202])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 k+0 S4 A32])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 99 98 100 (set (reg:SI 3 r3 [203])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 j+0 S4 A32])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 100 99 101 (set (reg:SI 3 r3 [204])
+        (minus:SI (reg:SI 2 r2 [202])
+            (reg:SI 3 r3 [203]))) integer_fft.c:195 29 {*arm_subsi3_insn}
+     (nil))
+
+(insn 101 100 102 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 k+0 S4 A32])
+        (reg:SI 3 r3 [204])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 102 101 103 33 "" [1 uses])
+
+(note 103 102 105 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(insn 105 103 106 (set (reg:SI 2 r2 [205])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 106 105 107 (set (reg:SI 3 r3 [206])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 n+0 S4 A32])) integer_fft.c:195 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 107 106 108 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [205])
+            (reg:SI 3 r3 [206]))) integer_fft.c:195 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 108 107 111 (set (pc)
+        (if_then_else (lt (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 104)
+            (pc))) integer_fft.c:195 211 {*arm_cond_branch}
+     (nil)
+ -> 104)
+
+(note 111 108 122 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(note 122 111 123 NOTE_INSN_EPILOGUE_BEG)
+
+(jump_insn 123 122 124 (unspec_volatile [
+            (return)
+        ] 1) integer_fft.c:197 305 {*epilogue_insns}
+     (nil))
+
+(barrier 124 123 125)
+
+(code_label 125 124 126 36 "" [0 uses])
+
+(insn 126 125 127 (unspec_volatile [
+            (const_int 0 [0])
+        ] 2) -1
+     (nil))
+
+(code_label 127 126 128 35 "" [0 uses])
+
+(insn 128 127 129 (unspec_volatile [
+            (symbol_ref:SI ("Sinewave") [flags 0x2]  <var_decl 0xb6b62180 Sinewave>)
+        ] 6) -1
+     (nil))
+
+(insn 129 128 130 (unspec_volatile [
+            (const_int 0 [0])
+        ] 3) -1
+     (nil))
+
+(barrier 130 129 116)
+
+(note 116 130 0 NOTE_INSN_DELETED)
+
+;; Function fix_loud (fix_loud)
+
+(note 1 0 7 NOTE_INSN_DELETED)
+
+(note 7 1 94 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn/f 94 7 95 (parallel [
+            (set (mem/c:BLK (pre_modify:SI (reg/f:SI 13 sp)
+                        (plus:SI (reg/f:SI 13 sp)
+                            (const_int -12 [0xfffffffffffffff4]))) [0 A8])
+                (unspec:BLK [
+                        (reg:SI 4 r4)
+                    ] 2))
+            (use (reg/f:SI 11 fp))
+            (use (reg:SI 14 lr))
+        ]) integer_fft.c:207 309 {*push_multi}
+     (expr_list:REG_FRAME_RELATED_EXPR (sequence [
+                (set/f (reg/f:SI 13 sp)
+                    (plus:SI (reg/f:SI 13 sp)
+                        (const_int -12 [0xfffffffffffffff4])))
+                (set/f (mem/c:SI (reg/f:SI 13 sp) [0 S4 A32])
+                    (reg:SI 4 r4))
+                (set/f (mem/c:SI (plus:SI (reg/f:SI 13 sp)
+                            (const_int 4 [0x4])) [0 S4 A32])
+                    (reg/f:SI 11 fp))
+                (set/f (mem/c:SI (plus:SI (reg/f:SI 13 sp)
+                            (const_int 8 [0x8])) [0 S4 A32])
+                    (reg:SI 14 lr))
+            ])
+        (nil)))
+
+(insn/f 95 94 96 (set (reg/f:SI 11 fp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int 8 [0x8]))) integer_fft.c:207 4 {*arm_addsi3}
+     (nil))
+
+(insn/f 96 95 97 (set (reg/f:SI 13 sp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int -28 [0xffffffffffffffe4]))) integer_fft.c:207 4 {*arm_addsi3}
+     (nil))
+
+(insn 97 96 98 (set (mem:BLK (scratch) [0 A8])
+        (unspec:BLK [
+                (reg/f:SI 13 sp)
+                (reg/f:SI 11 fp)
+            ] 5)) integer_fft.c:207 310 {stack_tie}
+     (nil))
+
+(note 98 97 2 NOTE_INSN_PROLOGUE_END)
+
+(insn 2 98 3 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 loud+0 S4 A32])
+        (reg:SI 0 r0 [ loud ])) integer_fft.c:207 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 3 2 4 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 fr+0 S4 A32])
+        (reg:SI 1 r1 [ fr ])) integer_fft.c:207 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 4 3 5 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 fi+0 S4 A32])
+        (reg:SI 2 r2 [ fi ])) integer_fft.c:207 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 5 4 6 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -36 [0xffffffffffffffdc])) [0 n+0 S4 A32])
+        (reg:SI 3 r3 [ n ])) integer_fft.c:207 625 {*arm_movsi_vfp}
+     (nil))
+
+(note 6 5 9 NOTE_INSN_FUNCTION_BEG)
+
+(insn 9 6 10 (set (reg:SI 3 r3 [160])
+        (const_int 0 [0])) integer_fft.c:210 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 10 9 11 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 max+0 S4 A32])
+        (reg:SI 3 r3 [160])) integer_fft.c:210 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 11 10 12 (set (reg:SI 3 r3 [161])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int 4 [0x4])) [0 scale_shift+0 S4 A32])) integer_fft.c:211 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 12 11 13 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [161])
+            (const_int 0 [0]))) integer_fft.c:211 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 13 12 14 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 17)
+            (pc))) integer_fft.c:211 211 {*arm_cond_branch}
+     (nil)
+ -> 17)
+
+(note 14 13 15 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(insn 15 14 16 (set (reg:SI 3 r3 [162])
+        (const_int 10 [0xa])) integer_fft.c:212 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 16 15 17 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 max+0 S4 A32])
+        (reg:SI 3 r3 [162])) integer_fft.c:212 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 17 16 18 38 "" [1 uses])
+
+(note 18 17 19 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 19 18 20 (set (reg:SI 3 r3 [163])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int 4 [0x4])) [0 scale_shift+0 S4 A32])) integer_fft.c:213 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 20 19 21 (set (reg:SI 2 r2 [orig:134 D.1429 ] [134])
+        (plus:SI (reg:SI 3 r3 [163])
+            (const_int 1 [0x1]))) integer_fft.c:213 4 {*arm_addsi3}
+     (nil))
+
+(insn 21 20 22 (set (reg:SI 3 r3 [164])
+        (reg:SI 2 r2 [orig:134 D.1429 ] [134])) integer_fft.c:213 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 22 21 23 (set (reg:SI 3 r3 [164])
+        (ashift:SI (reg:SI 3 r3 [164])
+            (const_int 1 [0x1]))) integer_fft.c:213 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 23 22 24 (set (reg:SI 3 r3 [164])
+        (plus:SI (reg:SI 3 r3 [164])
+            (reg:SI 2 r2 [orig:134 D.1429 ] [134]))) integer_fft.c:213 4 {*arm_addsi3}
+     (expr_list:REG_EQUAL (mult:SI (reg:SI 2 r2 [orig:134 D.1429 ] [134])
+            (const_int 3 [0x3]))
+        (nil)))
+
+(insn 24 23 26 (set (reg:SI 3 r3 [165])
+        (ashift:SI (reg:SI 3 r3 [164])
+            (const_int 1 [0x1]))) integer_fft.c:213 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 26 24 27 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int 4 [0x4])) [0 scale_shift+0 S4 A32])
+        (reg:SI 3 r3 [164])) integer_fft.c:213 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 27 26 28 (set (reg:SI 3 r3 [166])
+        (const_int 0 [0])) integer_fft.c:215 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 28 27 91 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [166])) integer_fft.c:215 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 91 28 92 (set (pc)
+        (label_ref 81)) integer_fft.c:215 223 {*arm_jump}
+     (nil)
+ -> 81)
+
+(barrier 92 91 83)
+
+(code_label 83 92 31 41 "" [1 uses])
+
+(note 31 83 32 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(insn 32 31 33 (set (reg:SI 3 r3 [orig:135 i.0 ] [135])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 i+0 S4 A32])) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 33 32 34 (set (reg:SI 3 r3 [orig:136 D.1431 ] [136])
+        (ashift:SI (reg:SI 3 r3 [orig:135 i.0 ] [135])
+            (const_int 1 [0x1]))) integer_fft.c:216 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 34 33 35 (set (reg:SI 2 r2 [167])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 loud+0 S4 A32])) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 35 34 36 (set (reg/f:SI 4 r4 [orig:137 D.1432 ] [137])
+        (plus:SI (reg:SI 2 r2 [167])
+            (reg:SI 3 r3 [orig:136 D.1431 ] [136]))) integer_fft.c:216 4 {*arm_addsi3}
+     (nil))
+
+(insn 36 35 37 (set (reg:SI 3 r3 [orig:138 i.1 ] [138])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 i+0 S4 A32])) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 37 36 38 (set (reg:SI 3 r3 [orig:139 D.1434 ] [139])
+        (ashift:SI (reg:SI 3 r3 [orig:138 i.1 ] [138])
+            (const_int 1 [0x1]))) integer_fft.c:216 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 38 37 39 (set (reg:SI 2 r2 [168])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 fr+0 S4 A32])) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 39 38 40 (set (reg/f:SI 3 r3 [orig:140 D.1435 ] [140])
+        (plus:SI (reg:SI 2 r2 [168])
+            (reg:SI 3 r3 [orig:139 D.1434 ] [139]))) integer_fft.c:216 4 {*arm_addsi3}
+     (nil))
+
+(insn 40 39 41 (set (reg:SI 2 r2 [orig:141 D.1436 ] [141])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [orig:140 D.1435 ] [140]) [0 *D.1435_17+0 S2 A16]))) integer_fft.c:216 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 41 40 42 (set (reg:SI 3 r3 [orig:142 i.2 ] [142])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 i+0 S4 A32])) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 42 41 43 (set (reg:SI 3 r3 [orig:143 D.1438 ] [143])
+        (ashift:SI (reg:SI 3 r3 [orig:142 i.2 ] [142])
+            (const_int 1 [0x1]))) integer_fft.c:216 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 43 42 44 (set (reg:SI 1 r1 [169])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 fi+0 S4 A32])) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 44 43 45 (set (reg/f:SI 3 r3 [orig:144 D.1439 ] [144])
+        (plus:SI (reg:SI 1 r1 [169])
+            (reg:SI 3 r3 [orig:143 D.1438 ] [143]))) integer_fft.c:216 4 {*arm_addsi3}
+     (nil))
+
+(insn 45 44 46 (set (reg:SI 3 r3 [orig:145 D.1440 ] [145])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [orig:144 D.1439 ] [144]) [0 *D.1439_22+0 S2 A16]))) integer_fft.c:216 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 46 45 47 (set (reg:SI 2 r2 [170])
+        (sign_extend:SI (reg:HI 2 r2 [orig:141 D.1436 ] [141]))) integer_fft.c:216 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 47 46 48 (set (reg:SI 3 r3 [171])
+        (sign_extend:SI (reg:HI 3 r3 [orig:145 D.1440 ] [145]))) integer_fft.c:216 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 48 47 49 (set (reg:SI 0 r0)
+        (reg:SI 2 r2 [170])) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 49 48 50 (set (reg:SI 1 r1)
+        (reg:SI 3 r3 [171])) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(call_insn 50 49 51 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("db_from_ampl") [flags 0x3]  <function_decl 0xb6b5c880 db_from_ampl>) [0 S4 A32])
+                    (const_int 0 [0])))
+            (use (const_int 0 [0]))
+            (clobber (reg:SI 14 lr))
+        ]) integer_fft.c:216 236 {*call_value_symbol}
+     (nil)
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 51 50 52 (set (reg:SI 3 r3 [orig:146 D.1441 ] [146])
+        (reg:SI 0 r0)) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 52 51 53 (set (reg:SI 2 r2 [orig:147 D.1442 ] [147])
+        (zero_extend:SI (reg:HI 3 r3 [orig:146 D.1441 ] [146]))) integer_fft.c:216 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 53 52 54 (set (reg:SI 3 r3 [172])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int 4 [0x4])) [0 scale_shift+0 S4 A32])) integer_fft.c:216 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 54 53 55 (set (reg:SI 3 r3 [orig:148 D.1443 ] [148])
+        (zero_extend:SI (reg:HI 3 r3 [172]))) integer_fft.c:216 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 55 54 56 (set (reg:SI 3 r3 [173])
+        (plus:SI (reg:SI 2 r2 [orig:147 D.1442 ] [147])
+            (reg:SI 3 r3 [orig:148 D.1443 ] [148]))) integer_fft.c:216 4 {*arm_addsi3}
+     (nil))
+
+(insn 56 55 57 (set (reg:SI 3 r3 [orig:149 D.1444 ] [149])
+        (zero_extend:SI (reg:HI 3 r3 [173]))) integer_fft.c:216 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 57 56 58 (set (reg:SI 3 r3 [orig:150 D.1445 ] [150])
+        (zero_extend:SI (reg:HI 3 r3 [orig:149 D.1444 ] [149]))) integer_fft.c:216 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 58 57 59 (set (mem:HI (reg/f:SI 4 r4 [orig:137 D.1432 ] [137]) [0 *D.1432_13+0 S2 A16])
+        (reg:HI 3 r3 [orig:150 D.1445 ] [150])) integer_fft.c:216 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 59 58 60 (set (reg:SI 3 r3 [orig:151 i.3 ] [151])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 i+0 S4 A32])) integer_fft.c:217 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 60 59 61 (set (reg:SI 3 r3 [orig:152 D.1447 ] [152])
+        (ashift:SI (reg:SI 3 r3 [orig:151 i.3 ] [151])
+            (const_int 1 [0x1]))) integer_fft.c:217 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 61 60 62 (set (reg:SI 2 r2 [174])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 loud+0 S4 A32])) integer_fft.c:217 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 62 61 63 (set (reg/f:SI 3 r3 [orig:153 D.1448 ] [153])
+        (plus:SI (reg:SI 2 r2 [174])
+            (reg:SI 3 r3 [orig:152 D.1447 ] [152]))) integer_fft.c:217 4 {*arm_addsi3}
+     (nil))
+
+(insn 63 62 64 (set (reg:SI 3 r3 [orig:154 D.1449 ] [154])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [orig:153 D.1448 ] [153]) [0 *D.1448_31+0 S2 A16]))) integer_fft.c:217 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 64 63 65 (set (reg:SI 2 r2 [orig:155 D.1450 ] [155])
+        (sign_extend:SI (reg:HI 3 r3 [orig:154 D.1449 ] [154]))) integer_fft.c:217 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 65 64 66 (set (reg:SI 3 r3 [175])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 max+0 S4 A32])) integer_fft.c:217 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 66 65 67 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [orig:155 D.1450 ] [155])
+            (reg:SI 3 r3 [175]))) integer_fft.c:217 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 67 66 68 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 76)
+            (pc))) integer_fft.c:217 211 {*arm_cond_branch}
+     (nil)
+ -> 76)
+
+(note 68 67 69 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(insn 69 68 70 (set (reg:SI 3 r3 [orig:156 i.4 ] [156])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 i+0 S4 A32])) integer_fft.c:218 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 70 69 71 (set (reg:SI 3 r3 [orig:157 D.1454 ] [157])
+        (ashift:SI (reg:SI 3 r3 [orig:156 i.4 ] [156])
+            (const_int 1 [0x1]))) integer_fft.c:218 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 71 70 72 (set (reg:SI 2 r2 [176])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 loud+0 S4 A32])) integer_fft.c:218 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 72 71 73 (set (reg/f:SI 3 r3 [orig:158 D.1455 ] [158])
+        (plus:SI (reg:SI 2 r2 [176])
+            (reg:SI 3 r3 [orig:157 D.1454 ] [157]))) integer_fft.c:218 4 {*arm_addsi3}
+     (nil))
+
+(insn 73 72 74 (set (reg:SI 2 r2 [177])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 max+0 S4 A32])) integer_fft.c:218 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 74 73 75 (set (reg:SI 2 r2 [orig:159 D.1456 ] [159])
+        (zero_extend:SI (reg:HI 2 r2 [177]))) integer_fft.c:218 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 75 74 76 (set (mem:HI (reg/f:SI 3 r3 [orig:158 D.1455 ] [158]) [0 *D.1455_36+0 S2 A16])
+        (reg:HI 2 r2 [orig:159 D.1456 ] [159])) integer_fft.c:218 178 {*movhi_insn_arch4}
+     (nil))
+
+(code_label 76 75 77 40 "" [1 uses])
+
+(note 77 76 78 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(insn 78 77 79 (set (reg:SI 3 r3 [178])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 i+0 S4 A32])) integer_fft.c:215 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 79 78 80 (set (reg:SI 3 r3 [179])
+        (plus:SI (reg:SI 3 r3 [178])
+            (const_int 1 [0x1]))) integer_fft.c:215 4 {*arm_addsi3}
+     (nil))
+
+(insn 80 79 81 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [179])) integer_fft.c:215 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 81 80 82 39 "" [1 uses])
+
+(note 82 81 84 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 84 82 85 (set (reg:SI 2 r2 [180])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 i+0 S4 A32])) integer_fft.c:215 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 85 84 86 (set (reg:SI 3 r3 [181])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -36 [0xffffffffffffffdc])) [0 n+0 S4 A32])) integer_fft.c:215 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 86 85 87 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [180])
+            (reg:SI 3 r3 [181]))) integer_fft.c:215 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 87 86 90 (set (pc)
+        (if_then_else (lt (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 83)
+            (pc))) integer_fft.c:215 211 {*arm_cond_branch}
+     (nil)
+ -> 83)
+
+(note 90 87 99 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(note 99 90 100 NOTE_INSN_EPILOGUE_BEG)
+
+(jump_insn 100 99 101 (unspec_volatile [
+            (return)
+        ] 1) integer_fft.c:220 305 {*epilogue_insns}
+     (nil))
+
+(barrier 101 100 93)
+
+(note 93 101 0 NOTE_INSN_DELETED)
+
+;; Function db_from_ampl (db_from_ampl)
+
+(note 1 0 7 NOTE_INSN_DELETED)
+
+(note 7 1 129 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn/f 129 7 130 (parallel [
+            (set (mem/c:BLK (pre_modify:SI (reg/f:SI 13 sp)
+                        (plus:SI (reg/f:SI 13 sp)
+                            (const_int -4 [0xfffffffffffffffc]))) [0 A8])
+                (unspec:BLK [
+                        (reg/f:SI 11 fp)
+                    ] 2))
+        ]) integer_fft.c:226 309 {*push_multi}
+     (expr_list:REG_FRAME_RELATED_EXPR (sequence [
+                (set/f (reg/f:SI 13 sp)
+                    (plus:SI (reg/f:SI 13 sp)
+                        (const_int -4 [0xfffffffffffffffc])))
+                (set/f (mem/c:SI (reg/f:SI 13 sp) [0 S4 A32])
+                    (reg/f:SI 11 fp))
+            ])
+        (nil)))
+
+(insn/f 130 129 131 (set (reg/f:SI 11 fp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int 0 [0]))) integer_fft.c:226 4 {*arm_addsi3}
+     (nil))
+
+(insn/f 131 130 132 (set (reg/f:SI 13 sp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int -20 [0xffffffffffffffec]))) integer_fft.c:226 4 {*arm_addsi3}
+     (nil))
+
+(insn 132 131 133 (set (mem:BLK (scratch) [0 A8])
+        (unspec:BLK [
+                (reg/f:SI 13 sp)
+                (reg/f:SI 11 fp)
+            ] 5)) integer_fft.c:226 310 {stack_tie}
+     (nil))
+
+(note 133 132 2 NOTE_INSN_PROLOGUE_END)
+
+(insn 2 133 4 (set (reg:SI 2 r2 [158])
+        (reg:SI 0 r0 [ re ])) integer_fft.c:226 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 4 2 3 (set (reg:SI 3 r3 [159])
+        (reg:SI 1 r1 [ im ])) integer_fft.c:226 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 3 4 5 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -14 [0xfffffffffffffff2])) [0 re+0 S2 A16])
+        (reg:HI 2 r2 [158])) integer_fft.c:226 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 5 3 6 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 im+0 S2 A16])
+        (reg:HI 3 r3 [159])) integer_fft.c:226 178 {*movhi_insn_arch4}
+     (nil))
+
+(note 6 5 9 NOTE_INSN_FUNCTION_BEG)
+
+(insn 9 6 10 (set (reg/f:SI 3 r3 [160])
+        (mem:SI (label_ref 139) [0 S4 A32])) integer_fft.c:231 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 10 9 11 (set (reg:SI 3 r3 [orig:134 D.1399 ] [134])
+        (mem/s/j/c:SI (reg/f:SI 3 r3 [160]) [0 loud2+0 S4 A32])) integer_fft.c:231 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 11 10 12 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [orig:134 D.1399 ] [134])
+            (const_int 0 [0]))) integer_fft.c:231 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 12 11 13 (set (pc)
+        (if_then_else (ne (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 69)
+            (pc))) integer_fft.c:231 211 {*arm_cond_branch}
+     (nil)
+ -> 69)
+
+(note 13 12 14 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(insn 14 13 15 (set (reg/f:SI 3 r3 [161])
+        (mem:SI (const (plus (label_ref 139)
+                    (const_int 4 [0x4]))) [0 S4 A32])) integer_fft.c:232 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 15 14 16 (set (reg:SI 3 r3 [orig:135 D.1402 ] [135])
+        (zero_extend:SI (mem/s/j/c:HI (reg/f:SI 3 r3 [161]) [0 Loudampl+0 S2 A32]))) integer_fft.c:232 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 16 15 17 (set (reg:SI 3 r3 [orig:136 D.1403 ] [136])
+        (sign_extend:SI (reg:HI 3 r3 [orig:135 D.1402 ] [135]))) integer_fft.c:232 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 17 16 18 (set (reg/f:SI 2 r2 [162])
+        (mem:SI (const (plus (label_ref 139)
+                    (const_int 4 [0x4]))) [0 S4 A32])) integer_fft.c:232 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 18 17 19 (set (reg:SI 2 r2 [orig:137 D.1404 ] [137])
+        (zero_extend:SI (mem/s/j/c:HI (reg/f:SI 2 r2 [162]) [0 Loudampl+0 S2 A32]))) integer_fft.c:232 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 19 18 20 (set (reg:SI 2 r2 [orig:138 D.1405 ] [138])
+        (sign_extend:SI (reg:HI 2 r2 [orig:137 D.1404 ] [137]))) integer_fft.c:232 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 20 19 21 (set (reg:SI 2 r2 [orig:139 D.1406 ] [139])
+        (mult:SI (reg:SI 2 r2 [orig:138 D.1405 ] [138])
+            (reg:SI 3 r3 [orig:136 D.1403 ] [136]))) integer_fft.c:232 34 {*arm_mulsi3_v6}
+     (nil))
+
+(insn 21 20 22 (set (reg/f:SI 3 r3 [163])
+        (mem:SI (label_ref 139) [0 S4 A32])) integer_fft.c:232 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 22 21 23 (set (mem/s/j/c:SI (reg/f:SI 3 r3 [163]) [0 loud2+0 S4 A32])
+        (reg:SI 2 r2 [orig:139 D.1406 ] [139])) integer_fft.c:232 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 23 22 24 (set (reg:SI 3 r3 [164])
+        (const_int 1 [0x1])) integer_fft.c:233 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 24 23 118 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [164])) integer_fft.c:233 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 118 24 119 (set (pc)
+        (label_ref 63)) integer_fft.c:233 223 {*arm_jump}
+     (nil)
+ -> 63)
+
+(barrier 119 118 65)
+
+(code_label 65 119 27 45 "" [1 uses])
+
+(note 27 65 28 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 28 27 29 (set (reg/f:SI 2 r2 [165])
+        (mem:SI (const (plus (label_ref 139)
+                    (const_int 4 [0x4]))) [0 S4 A32])) integer_fft.c:234 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 29 28 30 (set (reg:SI 3 r3 [166])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:234 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 30 29 31 (set (reg:SI 3 r3 [167])
+        (ashift:SI (reg:SI 3 r3 [166])
+            (const_int 1 [0x1]))) integer_fft.c:234 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 31 30 32 (set (reg/f:SI 3 r3 [168])
+        (plus:SI (reg/f:SI 2 r2 [165])
+            (reg:SI 3 r3 [167]))) integer_fft.c:234 4 {*arm_addsi3}
+     (nil))
+
+(insn 32 31 33 (set (reg:SI 3 r3 [orig:140 D.1407 ] [140])
+        (zero_extend:SI (mem/s/j:HI (reg/f:SI 3 r3 [168]) [0 Loudampl S2 A16]))) integer_fft.c:234 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 33 32 34 (set (reg:SI 3 r3 [orig:141 D.1408 ] [141])
+        (sign_extend:SI (reg:HI 3 r3 [orig:140 D.1407 ] [140]))) integer_fft.c:234 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 34 33 35 (set (reg/f:SI 1 r1 [169])
+        (mem:SI (const (plus (label_ref 139)
+                    (const_int 4 [0x4]))) [0 S4 A32])) integer_fft.c:234 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 35 34 36 (set (reg:SI 2 r2 [170])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:234 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 36 35 37 (set (reg:SI 2 r2 [171])
+        (ashift:SI (reg:SI 2 r2 [170])
+            (const_int 1 [0x1]))) integer_fft.c:234 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 37 36 38 (set (reg/f:SI 2 r2 [172])
+        (plus:SI (reg/f:SI 1 r1 [169])
+            (reg:SI 2 r2 [171]))) integer_fft.c:234 4 {*arm_addsi3}
+     (nil))
+
+(insn 38 37 39 (set (reg:SI 2 r2 [orig:142 D.1409 ] [142])
+        (zero_extend:SI (mem/s/j:HI (reg/f:SI 2 r2 [172]) [0 Loudampl S2 A16]))) integer_fft.c:234 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 39 38 40 (set (reg:SI 2 r2 [orig:143 D.1410 ] [143])
+        (sign_extend:SI (reg:HI 2 r2 [orig:142 D.1409 ] [142]))) integer_fft.c:234 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 40 39 41 (set (reg:SI 3 r3 [173])
+        (mult:SI (reg:SI 2 r2 [orig:143 D.1410 ] [143])
+            (reg:SI 3 r3 [orig:141 D.1408 ] [141]))) integer_fft.c:234 34 {*arm_mulsi3_v6}
+     (nil))
+
+(insn 41 40 42 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 v+0 S4 A32])
+        (reg:SI 3 r3 [173])) integer_fft.c:234 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 42 41 43 (set (reg/f:SI 3 r3 [174])
+        (mem:SI (label_ref 139) [0 S4 A32])) integer_fft.c:235 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 43 42 44 (set (reg:SI 2 r2 [175])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:235 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 44 43 45 (set (reg:SI 1 r1 [176])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 v+0 S4 A32])) integer_fft.c:235 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 45 44 46 (set (mem/s/j:SI (plus:SI (mult:SI (reg:SI 2 r2 [175])
+                    (const_int 4 [0x4]))
+                (reg/f:SI 3 r3 [174])) [0 loud2 S4 A32])
+        (reg:SI 1 r1 [176])) integer_fft.c:235 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 46 45 47 (set (reg:SI 3 r3 [177])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:236 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 47 46 48 (set (reg:SI 2 r2 [orig:144 D.1411 ] [144])
+        (plus:SI (reg:SI 3 r3 [177])
+            (const_int -1 [0xffffffffffffffff]))) integer_fft.c:236 4 {*arm_addsi3}
+     (nil))
+
+(insn 48 47 49 (set (reg:SI 3 r3 [178])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:236 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 49 48 50 (set (reg:SI 1 r1 [orig:145 D.1412 ] [145])
+        (plus:SI (reg:SI 3 r3 [178])
+            (const_int -1 [0xffffffffffffffff]))) integer_fft.c:236 4 {*arm_addsi3}
+     (nil))
+
+(insn 50 49 51 (set (reg/f:SI 3 r3 [179])
+        (mem:SI (label_ref 139) [0 S4 A32])) integer_fft.c:236 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 51 50 52 (set (reg:SI 1 r1 [orig:146 D.1413 ] [146])
+        (mem/s/j:SI (plus:SI (mult:SI (reg:SI 1 r1 [orig:145 D.1412 ] [145])
+                    (const_int 4 [0x4]))
+                (reg/f:SI 3 r3 [179])) [0 loud2 S4 A32])) integer_fft.c:236 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 52 51 53 (set (reg:SI 3 r3 [180])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 v+0 S4 A32])) integer_fft.c:236 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 53 52 54 (set (reg:SI 3 r3 [orig:147 D.1414 ] [147])
+        (plus:SI (reg:SI 1 r1 [orig:146 D.1413 ] [146])
+            (reg:SI 3 r3 [180]))) integer_fft.c:236 4 {*arm_addsi3}
+     (nil))
+
+(insn 54 53 55 (set (reg:SI 1 r1 [181])
+        (lshiftrt:SI (reg:SI 3 r3 [orig:147 D.1414 ] [147])
+            (const_int 31 [0x1f]))) integer_fft.c:236 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 55 54 56 (set (reg:SI 3 r3 [182])
+        (plus:SI (reg:SI 1 r1 [181])
+            (reg:SI 3 r3 [orig:147 D.1414 ] [147]))) integer_fft.c:236 4 {*arm_addsi3}
+     (nil))
+
+(insn 56 55 57 (set (reg:SI 3 r3 [183])
+        (ashiftrt:SI (reg:SI 3 r3 [182])
+            (const_int 1 [0x1]))) integer_fft.c:236 119 {*arm_shiftsi3}
+     (expr_list:REG_EQUAL (div:SI (reg:SI 3 r3 [orig:147 D.1414 ] [147])
+            (const_int 2 [0x2]))
+        (nil)))
+
+(insn 57 56 58 (set (reg:SI 1 r1 [orig:148 D.1415 ] [148])
+        (reg:SI 3 r3 [183])) integer_fft.c:236 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 58 57 59 (set (reg/f:SI 3 r3 [184])
+        (mem:SI (label_ref 139) [0 S4 A32])) integer_fft.c:236 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 59 58 60 (set (mem/s/j:SI (plus:SI (mult:SI (reg:SI 2 r2 [orig:144 D.1411 ] [144])
+                    (const_int 4 [0x4]))
+                (reg/f:SI 3 r3 [184])) [0 loud2 S4 A32])
+        (reg:SI 1 r1 [orig:148 D.1415 ] [148])) integer_fft.c:236 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 60 59 61 (set (reg:SI 3 r3 [185])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:233 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 61 60 62 (set (reg:SI 3 r3 [186])
+        (plus:SI (reg:SI 3 r3 [185])
+            (const_int 1 [0x1]))) integer_fft.c:233 4 {*arm_addsi3}
+     (nil))
+
+(insn 62 61 63 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [186])) integer_fft.c:233 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 63 62 64 44 "" [1 uses])
+
+(note 64 63 66 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(insn 66 64 67 (set (reg:SI 3 r3 [187])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:233 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 67 66 68 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [187])
+            (const_int 99 [0x63]))) integer_fft.c:233 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 68 67 69 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 65)
+            (pc))) integer_fft.c:233 211 {*arm_cond_branch}
+     (nil)
+ -> 65)
+
+(code_label 69 68 70 43 "" [1 uses])
+
+(note 70 69 71 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(insn 71 70 72 (set (reg:SI 3 r3 [orig:149 D.1416 ] [149])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -14 [0xfffffffffffffff2])) [0 re+0 S2 A16]))) integer_fft.c:240 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 72 71 73 (set (reg:SI 2 r2 [orig:150 D.1417 ] [150])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -14 [0xfffffffffffffff2])) [0 re+0 S2 A16]))) integer_fft.c:240 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 73 72 74 (set (reg:SI 2 r2 [orig:151 D.1418 ] [151])
+        (mult:SI (reg:SI 2 r2 [orig:150 D.1417 ] [150])
+            (reg:SI 3 r3 [orig:149 D.1416 ] [149]))) integer_fft.c:240 34 {*arm_mulsi3_v6}
+     (nil))
+
+(insn 74 73 75 (set (reg:SI 3 r3 [orig:152 D.1419 ] [152])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -16 [0xfffffffffffffff0])) [0 im+0 S2 A16]))) integer_fft.c:240 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 75 74 76 (set (reg:SI 1 r1 [orig:153 D.1420 ] [153])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -16 [0xfffffffffffffff0])) [0 im+0 S2 A16]))) integer_fft.c:240 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 76 75 77 (set (reg:SI 3 r3 [orig:154 D.1421 ] [154])
+        (mult:SI (reg:SI 1 r1 [orig:153 D.1420 ] [153])
+            (reg:SI 3 r3 [orig:152 D.1419 ] [152]))) integer_fft.c:240 34 {*arm_mulsi3_v6}
+     (nil))
+
+(insn 77 76 78 (set (reg:SI 3 r3 [188])
+        (plus:SI (reg:SI 2 r2 [orig:151 D.1418 ] [151])
+            (reg:SI 3 r3 [orig:154 D.1421 ] [154]))) integer_fft.c:240 4 {*arm_addsi3}
+     (nil))
+
+(insn 78 77 79 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 v+0 S4 A32])
+        (reg:SI 3 r3 [188])) integer_fft.c:240 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 79 78 80 (set (reg:SI 3 r3 [189])
+        (const_int 0 [0])) integer_fft.c:242 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 80 79 120 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [189])) integer_fft.c:242 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 120 80 121 (set (pc)
+        (label_ref 98)) integer_fft.c:242 223 {*arm_jump}
+     (nil)
+ -> 98)
+
+(barrier 121 120 100)
+
+(code_label 100 121 83 49 "" [1 uses])
+
+(note 83 100 84 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(insn 84 83 85 (set (reg/f:SI 3 r3 [190])
+        (mem:SI (label_ref 139) [0 S4 A32])) integer_fft.c:243 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 85 84 86 (set (reg:SI 2 r2 [191])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:243 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 86 85 87 (set (reg:SI 2 r2 [orig:155 D.1422 ] [155])
+        (mem/s/j:SI (plus:SI (mult:SI (reg:SI 2 r2 [191])
+                    (const_int 4 [0x4]))
+                (reg/f:SI 3 r3 [190])) [0 loud2 S4 A32])) integer_fft.c:243 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 87 86 88 (set (reg:SI 3 r3 [192])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 v+0 S4 A32])) integer_fft.c:243 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 88 87 89 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [orig:155 D.1422 ] [155])
+            (reg:SI 3 r3 [192]))) integer_fft.c:243 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 89 88 93 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref:SI 126)
+            (pc))) integer_fft.c:243 211 {*arm_cond_branch}
+     (nil)
+ -> 126)
+
+(code_label 93 89 94 47 "" [0 uses])
+
+(note 94 93 95 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 95 94 96 (set (reg:SI 3 r3 [193])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:242 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 96 95 97 (set (reg:SI 3 r3 [194])
+        (plus:SI (reg:SI 3 r3 [193])
+            (const_int 1 [0x1]))) integer_fft.c:242 4 {*arm_addsi3}
+     (nil))
+
+(insn 97 96 98 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])
+        (reg:SI 3 r3 [194])) integer_fft.c:242 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 98 97 99 46 "" [1 uses])
+
+(note 99 98 101 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(insn 101 99 102 (set (reg:SI 3 r3 [195])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:242 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 102 101 103 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [195])
+            (const_int 99 [0x63]))) integer_fft.c:242 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 103 102 122 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 100)
+            (pc))) integer_fft.c:242 211 {*arm_cond_branch}
+     (nil)
+ -> 100)
+
+(note 122 103 123 [bb 11] NOTE_INSN_BASIC_BLOCK)
+
+(jump_insn 123 122 124 (set (pc)
+        (label_ref 104)) 223 {*arm_jump}
+     (nil)
+ -> 104)
+
+(barrier 124 123 126)
+
+(code_label 126 124 125 50 "" [1 uses])
+
+(note 125 126 127 [bb 12] NOTE_INSN_BASIC_BLOCK)
+
+(insn 127 125 104 (const_int 0 [0]) integer_fft.c:244 251 {nop}
+     (nil))
+
+(code_label 104 127 105 48 "" [1 uses])
+
+(note 105 104 106 [bb 10] NOTE_INSN_BASIC_BLOCK)
+
+(insn 106 105 107 (set (reg:SI 3 r3 [196])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 i+0 S4 A32])) integer_fft.c:246 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 107 106 112 (set (reg:SI 3 r3 [orig:156 D.1425 ] [156])
+        (neg:SI (reg:SI 3 r3 [196]))) integer_fft.c:246 129 {*arm_negsi2}
+     (nil))
+
+(insn 112 107 115 (set (reg/i:SI 0 r0)
+        (reg:SI 3 r3 [orig:157 <retval> ] [157])) integer_fft.c:247 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 115 112 134 (use (reg/i:SI 0 r0)) integer_fft.c:247 -1
+     (nil))
+
+(note 134 115 135 NOTE_INSN_EPILOGUE_BEG)
+
+(jump_insn 135 134 136 (unspec_volatile [
+            (return)
+        ] 1) integer_fft.c:247 305 {*epilogue_insns}
+     (nil))
+
+(barrier 136 135 137)
+
+(code_label 137 136 138 52 "" [0 uses])
+
+(insn 138 137 139 (unspec_volatile [
+            (const_int 0 [0])
+        ] 2) -1
+     (nil))
+
+(code_label 139 138 140 51 "" [0 uses])
+
+(insn 140 139 141 (unspec_volatile [
+            (symbol_ref:SI ("loud2.1340") [flags 0x2]  <var_decl 0xb6b71180 loud2>)
+        ] 6) -1
+     (nil))
+
+(insn 141 140 142 (unspec_volatile [
+            (symbol_ref:SI ("Loudampl") [flags 0x2]  <var_decl 0xb6b622a0 Loudampl>)
+        ] 6) -1
+     (nil))
+
+(insn 142 141 143 (unspec_volatile [
+            (const_int 0 [0])
+        ] 3) -1
+     (nil))
+
+(barrier 143 142 128)
+
+(note 128 143 0 NOTE_INSN_DELETED)
+
+;; Function fix_mpy (fix_mpy)
+
+(note 1 0 7 NOTE_INSN_DELETED)
+
+(note 7 1 27 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn/f 27 7 28 (parallel [
+            (set (mem/c:BLK (pre_modify:SI (reg/f:SI 13 sp)
+                        (plus:SI (reg/f:SI 13 sp)
+                            (const_int -4 [0xfffffffffffffffc]))) [0 A8])
+                (unspec:BLK [
+                        (reg/f:SI 11 fp)
+                    ] 2))
+        ]) integer_fft.c:253 309 {*push_multi}
+     (expr_list:REG_FRAME_RELATED_EXPR (sequence [
+                (set/f (reg/f:SI 13 sp)
+                    (plus:SI (reg/f:SI 13 sp)
+                        (const_int -4 [0xfffffffffffffffc])))
+                (set/f (mem/c:SI (reg/f:SI 13 sp) [0 S4 A32])
+                    (reg/f:SI 11 fp))
+            ])
+        (nil)))
+
+(insn/f 28 27 29 (set (reg/f:SI 11 fp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int 0 [0]))) integer_fft.c:253 4 {*arm_addsi3}
+     (nil))
+
+(insn/f 29 28 30 (set (reg/f:SI 13 sp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int -12 [0xfffffffffffffff4]))) integer_fft.c:253 4 {*arm_addsi3}
+     (nil))
+
+(insn 30 29 31 (set (mem:BLK (scratch) [0 A8])
+        (unspec:BLK [
+                (reg/f:SI 13 sp)
+                (reg/f:SI 11 fp)
+            ] 5)) integer_fft.c:253 310 {stack_tie}
+     (nil))
+
+(note 31 30 2 NOTE_INSN_PROLOGUE_END)
+
+(insn 2 31 4 (set (reg:SI 2 r2 [140])
+        (reg:SI 0 r0 [ a ])) integer_fft.c:253 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 4 2 3 (set (reg:SI 3 r3 [141])
+        (reg:SI 1 r1 [ b ])) integer_fft.c:253 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 3 4 5 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -6 [0xfffffffffffffffa])) [0 a+0 S2 A16])
+        (reg:HI 2 r2 [140])) integer_fft.c:253 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 5 3 6 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 b+0 S2 A16])
+        (reg:HI 3 r3 [141])) integer_fft.c:253 178 {*movhi_insn_arch4}
+     (nil))
+
+(note 6 5 9 NOTE_INSN_FUNCTION_BEG)
+
+(insn 9 6 10 (set (reg:SI 3 r3 [orig:134 D.1393 ] [134])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -6 [0xfffffffffffffffa])) [0 a+0 S2 A16]))) integer_fft.c:254 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 10 9 11 (set (reg:SI 2 r2 [orig:135 D.1394 ] [135])
+        (sign_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -8 [0xfffffffffffffff8])) [0 b+0 S2 A16]))) integer_fft.c:254 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 11 10 12 (set (reg:SI 3 r3 [orig:136 D.1395 ] [136])
+        (mult:SI (reg:SI 2 r2 [orig:135 D.1394 ] [135])
+            (reg:SI 3 r3 [orig:134 D.1393 ] [134]))) integer_fft.c:254 34 {*arm_mulsi3_v6}
+     (nil))
+
+(insn 12 11 13 (set (reg:SI 3 r3 [orig:137 D.1396 ] [137])
+        (ashiftrt:SI (reg:SI 3 r3 [orig:136 D.1395 ] [136])
+            (const_int 15 [0xf]))) integer_fft.c:254 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 13 12 14 (set (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                (const_int -6 [0xfffffffffffffffa])) [0 a+0 S2 A16])
+        (reg:HI 3 r3 [orig:137 D.1396 ] [137])) integer_fft.c:254 178 {*movhi_insn_arch4}
+     (nil))
+
+(insn 14 13 15 (set (reg:SI 3 r3 [orig:138 D.1397 ] [138])
+        (zero_extend:SI (mem/c/i:HI (plus:SI (reg/f:SI 11 fp)
+                    (const_int -6 [0xfffffffffffffffa])) [0 a+0 S2 A16]))) integer_fft.c:255 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 15 14 20 (set (reg:SI 3 r3 [143])
+        (sign_extend:SI (reg:HI 3 r3 [orig:138 D.1397 ] [138]))) integer_fft.c:255 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 20 15 23 (set (reg/i:SI 0 r0)
+        (reg:SI 3 r3 [orig:139 <retval> ] [139])) integer_fft.c:256 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 23 20 32 (use (reg/i:SI 0 r0)) integer_fft.c:256 -1
+     (nil))
+
+(note 32 23 33 NOTE_INSN_EPILOGUE_BEG)
+
+(jump_insn 33 32 34 (unspec_volatile [
+            (return)
+        ] 1) integer_fft.c:256 305 {*epilogue_insns}
+     (nil))
+
+(barrier 34 33 26)
+
+(note 26 34 0 NOTE_INSN_DELETED)
+
+;; Function iscale (iscale)
+
+(note 1 0 6 NOTE_INSN_DELETED)
+
+(note 6 1 27 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn/f 27 6 28 (parallel [
+            (set (mem/c:BLK (pre_modify:SI (reg/f:SI 13 sp)
+                        (plus:SI (reg/f:SI 13 sp)
+                            (const_int -8 [0xfffffffffffffff8]))) [0 A8])
+                (unspec:BLK [
+                        (reg/f:SI 11 fp)
+                    ] 2))
+            (use (reg:SI 14 lr))
+        ]) integer_fft.c:262 309 {*push_multi}
+     (expr_list:REG_FRAME_RELATED_EXPR (sequence [
+                (set/f (reg/f:SI 13 sp)
+                    (plus:SI (reg/f:SI 13 sp)
+                        (const_int -8 [0xfffffffffffffff8])))
+                (set/f (mem/c:SI (reg/f:SI 13 sp) [0 S4 A32])
+                    (reg/f:SI 11 fp))
+                (set/f (mem/c:SI (plus:SI (reg/f:SI 13 sp)
+                            (const_int 4 [0x4])) [0 S4 A32])
+                    (reg:SI 14 lr))
+            ])
+        (nil)))
+
+(insn/f 28 27 29 (set (reg/f:SI 11 fp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int 4 [0x4]))) integer_fft.c:262 4 {*arm_addsi3}
+     (nil))
+
+(insn/f 29 28 30 (set (reg/f:SI 13 sp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int -16 [0xfffffffffffffff0]))) integer_fft.c:262 4 {*arm_addsi3}
+     (nil))
+
+(insn 30 29 31 (set (mem:BLK (scratch) [0 A8])
+        (unspec:BLK [
+                (reg/f:SI 13 sp)
+                (reg/f:SI 11 fp)
+            ] 5)) integer_fft.c:262 310 {stack_tie}
+     (nil))
+
+(note 31 30 2 NOTE_INSN_PROLOGUE_END)
+
+(insn 2 31 3 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 value+0 S4 A32])
+        (reg:SI 0 r0 [ value ])) integer_fft.c:262 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 3 2 4 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 numer+0 S4 A32])
+        (reg:SI 1 r1 [ numer ])) integer_fft.c:262 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 4 3 5 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 denom+0 S4 A32])
+        (reg:SI 2 r2 [ denom ])) integer_fft.c:262 625 {*arm_movsi_vfp}
+     (nil))
+
+(note 5 4 8 NOTE_INSN_FUNCTION_BEG)
+
+(insn 8 5 9 (set (reg:SI 3 r3 [137])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -8 [0xfffffffffffffff8])) [0 value+0 S4 A32])) integer_fft.c:270 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 9 8 10 (set (reg:SI 2 r2 [138])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -12 [0xfffffffffffffff4])) [0 numer+0 S4 A32])) integer_fft.c:270 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 10 9 11 (set (reg:SI 3 r3 [orig:134 D.1391 ] [134])
+        (mult:SI (reg:SI 2 r2 [138])
+            (reg:SI 3 r3 [137]))) integer_fft.c:270 34 {*arm_mulsi3_v6}
+     (nil))
+
+(insn 11 10 12 (set (reg:SI 0 r0)
+        (reg:SI 3 r3 [orig:134 D.1391 ] [134])) integer_fft.c:270 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 12 11 13 (set (reg:SI 1 r1)
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 denom+0 S4 A32])) integer_fft.c:270 625 {*arm_movsi_vfp}
+     (nil))
+
+(call_insn/u 13 12 14 (parallel [
+            (set (reg:SI 0 r0)
+                (call (mem:SI (symbol_ref:SI ("__aeabi_idiv") [flags 0x41]) [0 S4 A32])
+                    (const_int 0 [0])))
+            (use (const_int 0 [0]))
+            (clobber (reg:SI 14 lr))
+        ]) integer_fft.c:270 236 {*call_value_symbol}
+     (expr_list:REG_EH_REGION (const_int -2147483648 [0xffffffff80000000])
+        (nil))
+    (expr_list:REG_DEP_TRUE (use (reg:SI 1 r1))
+        (expr_list:REG_DEP_TRUE (use (reg:SI 0 r0))
+            (nil))))
+
+(insn 14 13 20 (set (reg:SI 3 r3 [141])
+        (reg:SI 0 r0)) integer_fft.c:270 625 {*arm_movsi_vfp}
+     (expr_list:REG_EQUAL (div:SI (reg:SI 3 r3 [orig:134 D.1391 ] [134])
+            (mem/c/i:SI (plus:SI (reg/f:SI 25 sfp)
+                    (const_int -12 [0xfffffffffffffff4])) [0 denom+0 S4 A32]))
+        (nil)))
+
+(insn 20 14 23 (set (reg/i:SI 0 r0)
+        (reg:SI 3 r3 [orig:136 <retval> ] [136])) integer_fft.c:272 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 23 20 32 (use (reg/i:SI 0 r0)) integer_fft.c:272 -1
+     (nil))
+
+(note 32 23 33 NOTE_INSN_EPILOGUE_BEG)
+
+(jump_insn 33 32 34 (unspec_volatile [
+            (return)
+        ] 1) integer_fft.c:272 305 {*epilogue_insns}
+     (nil))
+
+(barrier 34 33 26)
+
+(note 26 34 0 NOTE_INSN_DELETED)
+
+;; Function fix_dot (fix_dot)
+
+(note 1 0 6 NOTE_INSN_DELETED)
+
+(note 6 1 88 [bb 2] NOTE_INSN_BASIC_BLOCK)
+
+(insn/f 88 6 89 (parallel [
+            (set (mem/c:BLK (pre_modify:SI (reg/f:SI 13 sp)
+                        (plus:SI (reg/f:SI 13 sp)
+                            (const_int -12 [0xfffffffffffffff4]))) [0 A8])
+                (unspec:BLK [
+                        (reg:SI 4 r4)
+                    ] 2))
+            (use (reg:SI 5 r5))
+            (use (reg/f:SI 11 fp))
+        ]) integer_fft.c:278 309 {*push_multi}
+     (expr_list:REG_FRAME_RELATED_EXPR (sequence [
+                (set/f (reg/f:SI 13 sp)
+                    (plus:SI (reg/f:SI 13 sp)
+                        (const_int -12 [0xfffffffffffffff4])))
+                (set/f (mem/c:SI (reg/f:SI 13 sp) [0 S4 A32])
+                    (reg:SI 4 r4))
+                (set/f (mem/c:SI (plus:SI (reg/f:SI 13 sp)
+                            (const_int 4 [0x4])) [0 S4 A32])
+                    (reg:SI 5 r5))
+                (set/f (mem/c:SI (plus:SI (reg/f:SI 13 sp)
+                            (const_int 8 [0x8])) [0 S4 A32])
+                    (reg/f:SI 11 fp))
+            ])
+        (nil)))
+
+(insn/f 89 88 90 (set (reg/f:SI 11 fp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int 8 [0x8]))) integer_fft.c:278 4 {*arm_addsi3}
+     (nil))
+
+(insn/f 90 89 91 (set (reg/f:SI 13 sp)
+        (plus:SI (reg/f:SI 13 sp)
+            (const_int -28 [0xffffffffffffffe4]))) integer_fft.c:278 4 {*arm_addsi3}
+     (nil))
+
+(insn 91 90 92 (set (mem:BLK (scratch) [0 A8])
+        (unspec:BLK [
+                (reg/f:SI 13 sp)
+                (reg/f:SI 11 fp)
+            ] 5)) integer_fft.c:278 310 {stack_tie}
+     (nil))
+
+(note 92 91 2 NOTE_INSN_PROLOGUE_END)
+
+(insn 2 92 3 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -24 [0xffffffffffffffe8])) [0 hpa+0 S4 A32])
+        (reg:SI 0 r0 [ hpa ])) integer_fft.c:278 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 3 2 4 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 pb+0 S4 A32])
+        (reg:SI 1 r1 [ pb ])) integer_fft.c:278 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 4 3 5 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 n+0 S4 A32])
+        (reg:SI 2 r2 [ n ])) integer_fft.c:278 625 {*arm_movsi_vfp}
+     (nil))
+
+(note 5 4 8 NOTE_INSN_FUNCTION_BEG)
+
+(insn 8 5 9 (set (reg:SI 3 r3 [144])
+        (const_int 0 [0])) integer_fft.c:290 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 9 8 79 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 sum+0 S4 A32])
+        (reg:SI 3 r3 [144])) integer_fft.c:290 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 79 9 80 (set (pc)
+        (label_ref 32)) integer_fft.c:291 223 {*arm_jump}
+     (nil)
+ -> 32)
+
+(barrier 80 79 42)
+
+(code_label 42 80 12 57 "" [1 uses])
+
+(note 12 42 13 [bb 3] NOTE_INSN_BASIC_BLOCK)
+
+(insn 13 12 14 (set (reg/f:SI 3 r3 [145])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 pa+0 S4 A32])) integer_fft.c:292 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 14 13 15 (set (reg/v:SI 4 r4 [orig:135 a ] [135])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [145]) [0 *pa_3+0 S2 A16]))) integer_fft.c:292 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 15 14 16 (set (reg:SI 3 r3 [146])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 pa+0 S4 A32])) integer_fft.c:292 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 16 15 17 (set (reg:SI 3 r3 [147])
+        (plus:SI (reg:SI 3 r3 [146])
+            (const_int 2 [0x2]))) integer_fft.c:292 4 {*arm_addsi3}
+     (nil))
+
+(insn 17 16 18 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -16 [0xfffffffffffffff0])) [0 pa+0 S4 A32])
+        (reg:SI 3 r3 [147])) integer_fft.c:292 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 18 17 19 (set (reg/f:SI 3 r3 [148])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 pb+0 S4 A32])) integer_fft.c:293 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 19 18 20 (set (reg/v:SI 5 r5 [orig:136 b ] [136])
+        (zero_extend:SI (mem:HI (reg/f:SI 3 r3 [148]) [0 *pb_1+0 S2 A16]))) integer_fft.c:293 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 20 19 21 (set (reg:SI 3 r3 [149])
+        (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 pb+0 S4 A32])) integer_fft.c:293 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 21 20 22 (set (reg:SI 3 r3 [150])
+        (plus:SI (reg:SI 3 r3 [149])
+            (const_int 2 [0x2]))) integer_fft.c:293 4 {*arm_addsi3}
+     (nil))
+
+(insn 22 21 23 (set (mem/f/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -28 [0xffffffffffffffe4])) [0 pb+0 S4 A32])
+        (reg:SI 3 r3 [150])) integer_fft.c:293 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 23 22 24 (set (reg:SI 3 r3 [orig:137 D.1377 ] [137])
+        (sign_extend:SI (reg:HI 4 r4 [orig:135 a ] [135]))) integer_fft.c:294 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 24 23 25 (set (reg:SI 2 r2 [orig:138 D.1378 ] [138])
+        (sign_extend:SI (reg:HI 5 r5 [orig:136 b ] [136]))) integer_fft.c:294 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 25 24 26 (set (reg:SI 3 r3 [orig:139 D.1379 ] [139])
+        (mult:SI (reg:SI 2 r2 [orig:138 D.1378 ] [138])
+            (reg:SI 3 r3 [orig:137 D.1377 ] [137]))) integer_fft.c:294 34 {*arm_mulsi3_v6}
+     (nil))
+
+(insn 26 25 27 (set (reg:SI 3 r3 [orig:140 D.1380 ] [140])
+        (ashiftrt:SI (reg:SI 3 r3 [orig:139 D.1379 ] [139])
+            (const_int 15 [0xf]))) integer_fft.c:294 119 {*arm_shiftsi3}
+     (nil))
+
+(insn 27 26 28 (set (reg/v:SI 4 r4 [orig:135 a ] [135])
+        (zero_extend:SI (reg:HI 3 r3 [orig:140 D.1380 ] [140]))) integer_fft.c:294 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 28 27 29 (set (reg:SI 3 r3 [orig:141 D.1381 ] [141])
+        (sign_extend:SI (reg:HI 4 r4 [orig:135 a ] [135]))) integer_fft.c:295 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 29 28 30 (set (reg:SI 2 r2 [151])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 sum+0 S4 A32])) integer_fft.c:295 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 30 29 31 (set (reg:SI 3 r3 [152])
+        (plus:SI (reg:SI 2 r2 [151])
+            (reg:SI 3 r3 [orig:141 D.1381 ] [141]))) integer_fft.c:295 4 {*arm_addsi3}
+     (nil))
+
+(insn 31 30 32 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 sum+0 S4 A32])
+        (reg:SI 3 r3 [152])) integer_fft.c:295 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 32 31 33 56 "" [1 uses])
+
+(note 33 32 34 [bb 4] NOTE_INSN_BASIC_BLOCK)
+
+(insn 34 33 35 (set (reg:SI 3 r3 [154])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 n+0 S4 A32])) integer_fft.c:291 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 35 34 36 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [154])
+            (const_int 0 [0]))) integer_fft.c:291 199 {*arm_cmpsi_insn}
+     (nil))
+
+(insn 36 35 37 (set (reg:SI 3 r3 [155])
+        (ne:SI (reg:CC 24 cc)
+            (const_int 0 [0]))) integer_fft.c:291 213 {*mov_scc}
+     (nil))
+
+(insn 37 36 38 (set (reg:QI 3 r3 [153])
+        (reg:QI 3 r3 [155])) integer_fft.c:291 180 {*arm_movqi_insn}
+     (nil))
+
+(insn 38 37 39 (set (reg:SI 3 r3 [orig:134 D.1382 ] [134])
+        (zero_extend:SI (reg:QI 3 r3 [153]))) integer_fft.c:291 153 {*arm_zero_extendqisi2_v6}
+     (nil))
+
+(insn 39 38 40 (set (reg:SI 2 r2 [156])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 n+0 S4 A32])) integer_fft.c:291 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 40 39 41 (set (reg:SI 2 r2 [157])
+        (plus:SI (reg:SI 2 r2 [156])
+            (const_int -1 [0xffffffffffffffff]))) integer_fft.c:291 4 {*arm_addsi3}
+     (nil))
+
+(insn 41 40 43 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -32 [0xffffffffffffffe0])) [0 n+0 S4 A32])
+        (reg:SI 2 r2 [157])) integer_fft.c:291 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 43 41 44 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 3 r3 [orig:134 D.1382 ] [134])
+            (const_int 0 [0]))) integer_fft.c:291 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 44 43 45 (set (pc)
+        (if_then_else (ne (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 42)
+            (pc))) integer_fft.c:291 211 {*arm_cond_branch}
+     (nil)
+ -> 42)
+
+(note 45 44 46 [bb 5] NOTE_INSN_BASIC_BLOCK)
+
+(insn 46 45 47 (set (reg:SI 2 r2 [158])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 sum+0 S4 A32])) integer_fft.c:298 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 47 46 48 (set (reg:SI 3 r3 [159])
+        (mem:SI (label_ref 98) [0 S4 A32])) integer_fft.c:298 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 48 47 49 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [158])
+            (reg:SI 3 r3 [159]))) integer_fft.c:298 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 49 48 50 (set (pc)
+        (if_then_else (le (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 55)
+            (pc))) integer_fft.c:298 211 {*arm_cond_branch}
+     (nil)
+ -> 55)
+
+(note 50 49 51 [bb 6] NOTE_INSN_BASIC_BLOCK)
+
+(insn 51 50 52 (set (reg:SI 3 r3 [160])
+        (mem:SI (label_ref 98) [0 S4 A32])) integer_fft.c:299 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 52 51 81 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 sum+0 S4 A32])
+        (reg:SI 3 r3 [160])) integer_fft.c:299 625 {*arm_movsi_vfp}
+     (nil))
+
+(jump_insn 81 52 82 (set (pc)
+        (label_ref 64)) 223 {*arm_jump}
+     (nil)
+ -> 64)
+
+(barrier 82 81 55)
+
+(code_label 55 82 56 58 "" [1 uses])
+
+(note 56 55 57 [bb 7] NOTE_INSN_BASIC_BLOCK)
+
+(insn 57 56 58 (set (reg:SI 2 r2 [161])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 sum+0 S4 A32])) integer_fft.c:300 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 58 57 59 (set (reg:SI 3 r3 [162])
+        (mem:SI (const (plus (label_ref 98)
+                    (const_int 4 [0x4]))) [0 S4 A32])) integer_fft.c:300 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 59 58 60 (set (reg:CC 24 cc)
+        (compare:CC (reg:SI 2 r2 [161])
+            (reg:SI 3 r3 [162]))) integer_fft.c:300 199 {*arm_cmpsi_insn}
+     (nil))
+
+(jump_insn 60 59 61 (set (pc)
+        (if_then_else (ge (reg:CC 24 cc)
+                (const_int 0 [0]))
+            (label_ref 64)
+            (pc))) integer_fft.c:300 211 {*arm_cond_branch}
+     (nil)
+ -> 64)
+
+(note 61 60 62 [bb 8] NOTE_INSN_BASIC_BLOCK)
+
+(insn 62 61 63 (set (reg:SI 3 r3 [163])
+        (mem:SI (const (plus (label_ref 98)
+                    (const_int 4 [0x4]))) [0 S4 A32])) integer_fft.c:301 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 63 62 64 (set (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 sum+0 S4 A32])
+        (reg:SI 3 r3 [163])) integer_fft.c:301 625 {*arm_movsi_vfp}
+     (nil))
+
+(code_label 64 63 65 59 "" [2 uses])
+
+(note 65 64 66 [bb 9] NOTE_INSN_BASIC_BLOCK)
+
+(insn 66 65 67 (set (reg:SI 3 r3 [164])
+        (mem/c/i:SI (plus:SI (reg/f:SI 11 fp)
+                (const_int -20 [0xffffffffffffffec])) [0 sum+0 S4 A32])) integer_fft.c:303 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 67 66 68 (set (reg:SI 3 r3 [orig:142 D.1388 ] [142])
+        (zero_extend:SI (reg:HI 3 r3 [164]))) integer_fft.c:303 148 {*arm_zero_extendhisi2_v6}
+     (nil))
+
+(insn 68 67 73 (set (reg:SI 3 r3 [166])
+        (sign_extend:SI (reg:HI 3 r3 [orig:142 D.1388 ] [142]))) integer_fft.c:303 158 {*arm_extendhisi2_v6}
+     (nil))
+
+(insn 73 68 76 (set (reg/i:SI 0 r0)
+        (reg:SI 3 r3 [orig:143 <retval> ] [143])) integer_fft.c:340 625 {*arm_movsi_vfp}
+     (nil))
+
+(insn 76 73 93 (use (reg/i:SI 0 r0)) integer_fft.c:340 -1
+     (nil))
+
+(note 93 76 94 NOTE_INSN_EPILOGUE_BEG)
+
+(jump_insn 94 93 95 (unspec_volatile [
+            (return)
+        ] 1) integer_fft.c:340 305 {*epilogue_insns}
+     (nil))
+
+(barrier 95 94 96)
+
+(code_label 96 95 97 61 "" [0 uses])
+
+(insn 97 96 98 (unspec_volatile [
+            (const_int 0 [0])
+        ] 2) -1
+     (nil))
+
+(code_label 98 97 99 60 "" [0 uses])
+
+(insn 99 98 100 (unspec_volatile [
+            (const_int 32767 [0x7fff])
+        ] 6) -1
+     (nil))
+
+(insn 100 99 101 (unspec_volatile [
+            (const_int -32767 [0xffffffffffff8001])
+        ] 6) -1
+     (nil))
+
+(insn 101 100 102 (unspec_volatile [
+            (const_int 0 [0])
+        ] 3) -1
+     (nil))
+
+(barrier 102 101 87)
+
+(note 87 102 0 NOTE_INSN_DELETED)
