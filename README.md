@@ -10,5 +10,6 @@ How to use visualizer
 The `-l /dev/null` flag isn't strictly necessary, but does keep underrun and overrun errors from ruining the visualization.
 
 Here's a demo:
+
 ![demo](http://giant.gfycat.com/DecisiveMenacingDrafthorse.gif)
 
