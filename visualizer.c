@@ -48,31 +48,6 @@ void end_screen() {
 #define FLASH 0
 
 void draw_buf(short loud[], int N) {
-    ////clear();
-    //attron(COLOR_PAIR(1));
-    ////attrset(COLOR_PAIR(0));
-    //int i;
-    //for (i=0; i<N/4; i+=2){
-    //    int j;
-    //    int length = (abs(fftBufRe[i])/50) + 3;
-    //    if (length > LINES) {
-    //        attron(COLOR_PAIR(2));
-    //    }
-    //    for(j=0; j<LINES;j++){
-    //        if(j<length) {
-    //            mvaddch(LINES-j,i,'#');
-    //            mvaddch(LINES-j,i+1,'#');//ACS_BLOCK);
-    //        } else {
-    //            mvaddch(LINES-j,i,' ');
-    //            mvaddch(LINES-j,i+1,' ');//ACS_BLOCK);
-    //        }
-    //    }
-    //    /*int length2 = abs(fftBufIm[i])/50 + 3;
-    //    for(j=0;j<length2 && j<LINES-10;j++){
-    //        mvaddch(LINES-j,i+1,ACS_BLOCK);
-    //    }*/
-    //    //mvprintw(i, 0, "%d", fftBufRe[i]);
-    //}
     int flash = 0;
 
     int i, j;

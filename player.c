@@ -439,6 +439,9 @@ static int stuff_buffer(double playback_rate, short *inptr, short *outptr) {
 static unsigned fftCount = 0;
 static short fftBufRe[N];
 static unsigned fftz = 0;
+#define QUEUELENGTH 12
+short loudQueue[QUEUELENGTH][N];
+short currQueue = 0;
 
 static void *player_thread_func(void *arg) {
     int play_samples;
@@ -502,9 +505,9 @@ static void *player_thread_func(void *arg) {
                 }
                 memset(fftBufIm, 0, 2*N);
                 if (fix_fft(fftBufRe, fftBufIm, M, 0) != -1) {
-                    short loud[N];
-                    fix_loud(loud, fftBufRe, fftBufIm, N, 0);
-                    draw_buf(loud, N);
+                    fix_loud(loudQueue[currQueue], fftBufRe, fftBufIm, N, 0);
+                    currQueue = (currQueue + 1) % QUEUELENGTH;
+                    draw_buf(loudQueue[currQueue], N);
                 }
             }
             fftCount++;
